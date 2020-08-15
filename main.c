@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/05 13:01:52 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/08/12 12:47:02 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,6 @@ int		main(void)
 {
 	printf("Hola\n");
 	ft_printf("Hola\n");
+	printf("Hol%a\n");
+	ft_printf("Hola%a\n");
 }

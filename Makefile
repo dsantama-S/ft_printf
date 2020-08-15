@@ -1,17 +1,14 @@
 LIB		=	ft_printf.h
+
 SRCS	=	ft_printf.c
 
-OBJS	=	$(SRCS:.c=.o)
 NAME	=	libftprintf.a
 CFLAGS	=	-Wall -Werror -Wextra
+OBJS	=	$(SRCS:.c=.o)
 
 $(NAME):	$(OBJS) _libft
 			@ar -rcs $(NAME) $(OBJS) $(shell find libft/ -name "*.o")
 			@ranlib $(NAME)
-
-.c.o:
-			@gcc -c $< -o $(<:.c=.o)
-
 _libft:
 			@make -C libft
 
@@ -27,4 +24,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re Norme
+.PHONY:		all clean fclean re
