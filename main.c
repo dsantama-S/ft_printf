@@ -15,8 +15,12 @@
 
 int		main(void)
 {
+	char c;
+	
+	c = 'a';
 	printf("Hola\n");
 	ft_printf("Hola\n");
-	printf("Hol%a\n");
-	ft_printf("Hola%a\n");
+	printf("%c\n", c);
+	ft_printf("%c\n", c);
+	ft_printf("%\n");
 }

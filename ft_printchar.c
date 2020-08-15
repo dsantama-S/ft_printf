@@ -12,9 +12,13 @@
 
 #include "ft_printf.h"
 
-void	ft_printchar(t_data *data)
+void	ft_printchar(const char *format, ...)
 {
-	write(1, data, 1);
-	data->type = ('c' | 's' | 'p' |
-	'd' | 'i' | 'u' | 'x' | 'X' | '%');
+	t_data *data;
+	char c;
+
+	va_start(data->args, format);
+	c = va_arg(data->args, int);
+	ft_putchar(c);
+	va_end(data->args);
 }

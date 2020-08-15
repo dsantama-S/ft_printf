@@ -25,12 +25,13 @@ int		ft_printf(const char *format, ...)
 		return (0);
 	n_format = (ft_strlen(format));
 	str = (char *)format;
-	while (i < n_format)
+	while (format)
 	{
-		write(1, str, 1);
 		if (str[i] == '%')
-			break ;
-		str++;
+		{
+			ft_control(format, str, i);
+		}
+		ft_putchar(str[i]);
 		i++;
 	}
 	va_start(data->args, format);
