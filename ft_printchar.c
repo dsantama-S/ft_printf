@@ -6,19 +6,16 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:58:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/05 11:17:52 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/08/17 12:48:26 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printchar(const char *format, ...)
+void	ft_printchar(t_data *data, va_list args)
 {
-	t_data *data;
-	char c;
+	unsigned char c;
 
-	va_start(data->args, format);
-	c = va_arg(data->args, int);
+	c = (unsigned char)va_arg(args, int);
 	ft_putchar(c);
-	va_end(data->args);
 }
