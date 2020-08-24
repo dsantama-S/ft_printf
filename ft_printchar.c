@@ -12,10 +12,15 @@
 
 #include "ft_printf.h"
 
-void	ft_printchar(t_data *data, va_list args)
+void	ft_printchar(const char *format, int i, va_list args)
 {
 	unsigned char c;
 
-	c = (unsigned char)va_arg(args, int);
-	ft_putchar(c);
+	if (format[i] == '%')
+		ft_putchar('%');
+	else
+	{
+		c = (unsigned char)va_arg(args, int);
+		ft_putchar(c);
+	}
 }

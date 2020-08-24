@@ -29,7 +29,8 @@ int		ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			ft_control(format, i, data, args);
+			ft_control(format, i, args);
+			va_arg(args, int);
 			i += 2;
 		}
 		ft_putchar(format[i]);

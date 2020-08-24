@@ -12,9 +12,13 @@
 
 #include "ft_printf.h"
 
-void	ft_control(const char *format, int i, t_data *data, va_list args)
+void	ft_control(const char *format, int i, va_list args)
 {
 	i++;
-	if (format[i] == 'c')
-		ft_printchar(data, args);
+	if (format[i] == 'c' || format[i] == '%')
+		ft_printchar(format, i, args);
+	if (format[i] == 's')
+		ft_printstr(args);
+	if (format[i] == 'p')
+		ft_printptr(args);
 }

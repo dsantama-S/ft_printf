@@ -32,6 +32,8 @@ typedef struct		s_data
 }					t_data;
 
 int					ft_printf(const char *format, ...);
-void				ft_printchar(t_data *data, va_list args);
-void 				ft_control(const char *format, int i, t_data *data, va_list args);
+void				ft_printchar(const char *format, int i, va_list args);
+void				ft_printstr(va_list args);
+void 				ft_control(const char *format, int i, va_list args);
+void				ft_printptr(va_list args);
 #endif

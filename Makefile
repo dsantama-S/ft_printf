@@ -2,6 +2,8 @@ LIB		=	ft_printf.h
 SRCS	=	ft_printf.c 			\
 			ft_control.c			\
 			ft_printchar.c			\
+			ft_printstr.c			\
+			ft_printptr.c			\
 			
 OBJS	=	$(SRCS:.c=.o)
 NAME	=	libftprintf.a
@@ -12,7 +14,7 @@ $(NAME):	$(OBJS) _libft
 			@ranlib $(NAME)
 
 .c.o:
-			@gcc -c $< -o $(<:.c=.o)
+			gcc -Wall -Werror -Wextra -I. -c $< -o $(<:.c=.o)
 
 _libft:
 			@make -C libft
@@ -20,7 +22,7 @@ _libft:
 all:		$(NAME)
 
 clean:
-			@rm -f $(OBJS)
+			rm -f $(OBJS)
 			@make clean -C libft
 
 fclean:		clean
