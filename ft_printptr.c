@@ -1,9 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printptr.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/27 09:05:16 by dsantama          #+#    #+#             */
+/*   Updated: 2020/08/27 11:12:50 by dsantama         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void ft_printptr(va_list args)
+static uintmax_t	get_num(va_list args)
 {
-    int *ptr;
+	uintmax_t	num;
 
-	ptr = (va_arg(args, int *));
-	ft_putchar(ptr);
+	num = (unsigned long)(va_arg(args, unsigned long int));
+	return (num);
+}
+
+void				ft_printptr(va_list args)
+{
+	char			*str;
+	uintmax_t		nums;
+
+	nums = get_num(args);
+	str = ft_itoa_base(nums, 16, 'a');
+	write(1, "0x", 2);
+	ft_putstr(str);
 }

@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:50:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/17 12:48:09 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/08/27 09:18:08 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			ft_control(format, i, args);
-			va_arg(args, int);
 			i += 2;
 		}
 		ft_putchar(format[i]);

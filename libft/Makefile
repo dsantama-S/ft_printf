@@ -29,6 +29,7 @@ SRC = 	ft_atoi.c \
 		ft_strtrim.c \
 		ft_strnstr.c \
 		ft_strncmp.c \
+		ft_strnew.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
 		ft_substr.c \
@@ -38,6 +39,7 @@ SRC = 	ft_atoi.c \
 		ft_isascii.c \
 		ft_isprint.c \
 		ft_itoa.c \
+		ft_itoa_base.c \
 		ft_toupper.c \
 		ft_tolower.c \
 

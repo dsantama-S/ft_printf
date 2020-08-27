@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/27 09:26:04 by dsantama         ###   ########.fr       */
+/*   Created: 2020/08/27 10:32:28 by dsantama          #+#    #+#             */
+/*   Updated: 2020/08/27 10:41:50 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_printstr(va_list args)
+void	ft_printint(va_list args)
 {
-	char *str;
+	char	*str;
+	int		nums;
 
-	str = va_arg(args, char *);
+	nums = va_arg(args, int);
+	str = ft_itoa(nums);
 	ft_putstr(str);
 }

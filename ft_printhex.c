@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/27 09:26:04 by dsantama         ###   ########.fr       */
+/*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
+/*   Updated: 2020/08/27 11:25:10 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_printstr(va_list args)
+void	ft_printhex(const char *format, int i, va_list args)
 {
-	char *str;
+	char	*str;
+	int		nums;
 
-	str = va_arg(args, char *);
+	nums = va_arg(args, int);
+	if (format[i] == 'x')
+		str = ft_itoa_base(nums, 16, 'a');
+	if (format[i] == 'X')
+		str = ft_itoa_base(nums, 16, 'A');
 	ft_putstr(str);
 }
