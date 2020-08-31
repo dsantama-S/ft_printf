@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_utilsprint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/04 08:50:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/31 10:39:17 by dsantama         ###   ########.fr       */
+/*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
+/*   Updated: 2020/08/31 12:51:36 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+void		ft_putzeros(const char *format, int i)
 {
-	t_data		*data;
-	va_list		args;
-	int			n_format;
-	int			i;
+	char	*str;
+	int		n;
 
-	va_start(args, format);
-	i = 0;
-	data = ((t_data *)malloc(sizeof(t_data)));
-	if (!data)
-		return (0);
-	n_format = (ft_strlen(format));
-	while (i < n_format)
+	n = 0;
+	str = NULL;
+	while (format[i] >= '0' && format[i] <= '9')
 	{
-		if (format[i] == '%')
-		{
-			ft_control(format, i, args, data);
-			i += data->total;
-		}
-		ft_putchar(format[i]);
+		str[n] = format[i];
+		n++;
 		i++;
 	}
-	va_end(args);
-	return (n_format);
+	ft_putstr(str);
 }

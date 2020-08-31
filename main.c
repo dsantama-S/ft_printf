@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/27 11:19:29 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:18:41 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,8 @@ int		main(void)
 	ft_printf("Mi función: %X %C %X\n\n", -11, 'y', -5);
 	printf("Original: %x %c %x\n\n", 16, 'y', 5);
 	ft_printf("Mi función: %x %c %x\n\n", 16, 'y', 5);
+	printf("Original: %05d\n\n", 6);
+	ft_printf("Mi función: %05d\n\n", 6);
+	printf("Original: %05d %c %02d\n\n", 6, 'y', 7);
+	ft_printf("Mi función: %05d %c %02d\n\n", 6, 'y', 7);
 }

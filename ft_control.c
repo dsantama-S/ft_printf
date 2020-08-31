@@ -6,13 +6,13 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 11:06:49 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/27 11:16:45 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:52:25 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_control(const char *format, int i, va_list args)
+void	ft_control(const char *format, int i, va_list args, t_data *data)
 {
 	i++;
 	if (format[i] == 'c' || format[i] == 'C')
@@ -27,4 +27,8 @@ void	ft_control(const char *format, int i, va_list args)
 		ft_printhex(format, i, args);
 	if (format[i] == '%')
 		ft_putchar('%');
+	data->total = 2;
+	if ((format[i] >= '0' && format[i] <= '9') ||
+	(format[i] == '.' || format[i] == '-' || format[i] == '*'))
+		ft_flags(format, i, args, data);
 }

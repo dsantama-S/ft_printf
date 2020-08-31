@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/27 11:16:40 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:24:19 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@
 
 typedef struct		s_data
 {
-	char			*str;
-	int				star_w;
-	int				star_p;
-	int				minus;
+	int				total;
 	int				zero;
-	int				dot;
-	int				type;
-
 }					t_data;
 
 int					ft_printf(const char *format, ...);
 void				ft_printchar(va_list args);
 void				ft_printint(va_list args);
 void				ft_printstr(va_list args);
+void				ft_putzeros(const char *format, int i);
 void				ft_printhex(const char *format, int i, va_list args);
-void				ft_control(const char *format, int i, va_list args);
+void				ft_control(const char *format, int i, va_list args,
+t_data *data);
+void				ft_flags(const char *format, int i, va_list args,
+t_data *data);
+t_data				*ft_zero(const char *format, int i, va_list args,
+t_data *data);
 void				ft_printptr(va_list args);
 #endif

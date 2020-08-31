@@ -6,6 +6,9 @@ SRCS	=	ft_printf.c 			\
 			ft_printptr.c			\
 			ft_printint.c			\
 			ft_printhex.c			\
+			ft_zero.c				\
+			ft_flags.c				\
+			ft_utilsprint.c			\
 			
 OBJS	=	$(SRCS:.c=.o)
 NAME	=	libftprintf.a
