@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/08/31 11:18:41 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/03 13:31:45 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int		main(void)
 	ft_printf("Mi funcion: %s o %s\n\n", str, "Neymar");
 	printf("Original: %s %c %s\n\n", str, 'y', str2);
 	ft_printf("Mi funcion: %s %c %s\n\n", str, 'y', str2);
+	printf("Original: %s%s\n\n", str, str2);
+	ft_printf("Mi funcion: %s%s\n\n", str, str2);
 	printf("Original: direccion = %p\n\n", &p);
 	ft_printf("Mi funcion: direccion = %p\n\n", &p);
 	printf("Original: direccion = %p %c %p\n\n", &p, 'y', &a);
@@ -75,4 +77,16 @@ int		main(void)
 	ft_printf("Mi función: %05d\n\n", 6);
 	printf("Original: %05d %c %02d\n\n", 6, 'y', 7);
 	ft_printf("Mi función: %05d %c %02d\n\n", 6, 'y', 7);
+	printf("Original: %010d\n\n", 6);
+	ft_printf("Mi función: %010d\n\n", 6);
+	printf("Original: %0100d\n\n", 6);
+	ft_printf("Mi función: %0100d\n\n", 6);
+	printf("Original: %010d %c %02d\n\n", 6, 'y', 7);
+	ft_printf("Mi función: %010d %c %02d\n\n", 6, 'y', 7);
+	printf("Original: %00d %c %5d\n\n", 6, 'y', 7);
+	ft_printf("Mi función: %00d %c %5d\n\n", 6, 'y', 7);
+	printf("Original: %10d si\n\n", 6);
+	ft_printf("Mi función: %10d si\n\n", 6);
+	printf("Original: %0d %c %100d\n\n", 6, 'y', 7);
+	ft_printf("Mi función: %0d %c %100d\n\n", 6, 'y', 7);
 }

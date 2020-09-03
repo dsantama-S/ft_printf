@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_spaces.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/04 08:50:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/03 13:48:57 by dsantama         ###   ########.fr       */
+/*   Created: 2020/09/03 11:58:33 by dsantama          #+#    #+#             */
+/*   Updated: 2020/09/03 12:13:30 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+t_data		*ft_spaces(const char *format, int i, va_list args, t_data *data)
 {
-	t_data		*data;
-	va_list		args;
-	int			n_format;
-	int			i;
-
-	va_start(args, format);
-	i = 0;
-	data = ((t_data *)malloc(sizeof(t_data)));
-	if (!data)
-		return (0);
-	n_format = (ft_strlen(format));
-	while (i < n_format)
+	ft_putspaces(format, i, data);
+	if (data->digits > 1)
 	{
-		if (format[i] == '%')
-		{
-			ft_control(format, i, args, data);
-			i += data->total;
-		}
-		ft_putchar(format[i]);
-		i++;
+		i += (data->digits - 1);
+		data->zero = data->digits;
 	}
-	va_end(args);
-	return (n_format);
+	else
+		data->zero = 1;
+	ft_control(format, i, args, data);
+	data->total += data->zero;
+	return (data);
 }
