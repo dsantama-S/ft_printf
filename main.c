@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/03 13:31:45 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/08 13:24:34 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ int		main(void)
 	ft_printf("Mi funcion: %s %c %s\n\n", str, 'y', str2);
 	printf("Original: %s%s\n\n", str, str2);
 	ft_printf("Mi funcion: %s%s\n\n", str, str2);
+	printf("Original: %s%s%s\n\n", str, str2, "Lewandowski");
+	ft_printf("Mi funcion: %s%s%s\n\n", str, str2, "Lewandowski");
+	printf("Original: %s%s%s%s\n\n", str, str2, "Lewandowski", "Davis");
+	ft_printf("Mi funcion: %s%s%s%s\n\n", str, str2, "Lewandowski", "Davis");
+	printf("Original: %s%s%s%s%s\n\n", str, str2, "Lewandowski", "Davis", "CR7");
+	ft_printf("Mi funcion: %s%s%s%s%s\n\n", str, str2, "Lewandowski", "Davis", "CR7");
 	printf("Original: direccion = %p\n\n", &p);
 	ft_printf("Mi funcion: direccion = %p\n\n", &p);
 	printf("Original: direccion = %p %c %p\n\n", &p, 'y', &a);

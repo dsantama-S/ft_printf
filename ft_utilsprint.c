@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/03 13:49:29 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/08 13:17:19 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,27 @@ t_data		*ft_putspaces(const char *format, int i, t_data *data)
 	{
 		ft_putchar(' ');
 		count++;
+	}
+	return (data);
+}
+
+t_data		*ft_percent(const char *format, int i, va_list args, t_data *data)
+{
+	static int		n;
+
+	n = 0;
+	data->percent = 0;
+	if (format[i] == '%')
+	{
+		ft_control(format, i, args, data);
+		i += data->total;
+		n += 2;
+		if (format[i] == '%')
+		{
+			ft_percent(format, i, args, data);
+			n += 2;
+		}
+		data->percent = n;
 	}
 	return (data);
 }

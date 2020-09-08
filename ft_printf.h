@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/03 13:48:19 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/08 11:51:56 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_data
 	int				total;
 	int				zero;
 	int				digits;
+	int				percent;
 }					t_data;
 
 int					ft_printf(const char *format, ...);
