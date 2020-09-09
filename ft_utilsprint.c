@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/08 13:17:19 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/09 13:05:15 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ static int	ef_number_digit(int n)
 		return (1 + ef_number_digit(n / 10));
 }
 
-t_data		*ft_putzeros(const char *format, int i, t_data *data)
+static int	copy_num(const char *format, int i)
 {
 	char	*str;
 	int		n;
 	int		num;
-	int		count;
 
 	n = 0;
-	count = 0;
+	num = 0;
 	str = (char *)malloc(ft_strlen(format));
 	while (format[i] != (format[i] >= '0' && format[i] <= '9'))
 	{
@@ -38,6 +37,16 @@ t_data		*ft_putzeros(const char *format, int i, t_data *data)
 	}
 	num = ft_atoi(str);
 	free(str);
+	return (num);
+}
+
+t_data		*ft_putzeros(const char *format, int i, t_data *data)
+{
+	int		num;
+	int		count;
+
+	count = 0;
+	num = copy_num(format, i);
 	data->digits = ef_number_digit(num);
 	while (count < (num - 1))
 	{
@@ -49,22 +58,11 @@ t_data		*ft_putzeros(const char *format, int i, t_data *data)
 
 t_data		*ft_putspaces(const char *format, int i, t_data *data)
 {
-	char	*str;
-	int		n;
 	int		num;
 	int		count;
 
-	n = 0;
 	count = 0;
-	str = (char *)malloc(ft_strlen(format));
-	while (format[i] != (format[i] >= '0' && format[i] <= '9'))
-	{
-		str[n] = format[i];
-		n++;
-		i++;
-	}
-	num = ft_atoi(str);
-	free(str);
+	num = copy_num(format, i);
 	data->digits = ef_number_digit(num);
 	while (count < (num - 1))
 	{

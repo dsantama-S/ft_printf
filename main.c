@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/08 13:24:34 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/09 11:56:21 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,26 @@ int		main(void)
 	ft_printf("Mi función: %X %C %X\n\n", -11, 'y', -5);
 	printf("Original: %x %c %x\n\n", 16, 'y', 5);
 	ft_printf("Mi función: %x %c %x\n\n", 16, 'y', 5);
-	printf("Original: %05d\n\n", 6);
-	ft_printf("Mi función: %05d\n\n", 6);
-	printf("Original: %05d %c %02d\n\n", 6, 'y', 7);
-	ft_printf("Mi función: %05d %c %02d\n\n", 6, 'y', 7);
-	printf("Original: %010d\n\n", 6);
-	ft_printf("Mi función: %010d\n\n", 6);
-	printf("Original: %0100d\n\n", 6);
-	ft_printf("Mi función: %0100d\n\n", 6);
-	printf("Original: %010d %c %02d\n\n", 6, 'y', 7);
-	ft_printf("Mi función: %010d %c %02d\n\n", 6, 'y', 7);
-	printf("Original: %00d %c %5d\n\n", 6, 'y', 7);
-	ft_printf("Mi función: %00d %c %5d\n\n", 6, 'y', 7);
-	printf("Original: %10d si\n\n", 6);
-	ft_printf("Mi función: %10d si\n\n", 6);
-	printf("Original: %0d %c %100d\n\n", 6, 'y', 7);
-	ft_printf("Mi función: %0d %c %100d\n\n", 6, 'y', 7);
+	printf("F1: %05d\n\n", 6);
+	ft_printf("F2: %05d\n\n", 6);
+	printf("F1: %05d %c %02d\n\n", 6, 'y', 7);
+	ft_printf("F2: %05d %c %02d\n\n", 6, 'y', 7);
+	printf("F1: %010d\n\n", 6);
+	ft_printf("F2: %010d\n\n", 6);
+	printf("F1: %0100d\n\n", 6);
+	ft_printf("F2: %0100d\n\n", 6);
+	printf("F1: %010d %c %02d\n\n", 60, 'y', 70);
+	ft_printf("F2: %010d %c %02d\n\n", 60, 'y', 70);
+	printf("F1: %00d %c %5d\n\n", 6, 'y', 7);
+	ft_printf("F2: %00d %c %5d\n\n", 6, 'y', 7);
+	printf("F1: %10d si\n\n", 60);
+	ft_printf("F2: %10d si\n\n", 60);
+	printf("F1: %10s %s\n\n", "si", "no");
+	ft_printf("F2: %10s %s\n\n", "si", "no");
+	printf("F1: %32s %s\n\n", "siempre", "no");
+	ft_printf("F2: %32s %s\n\n", "siempre", "no");
+	printf("F1: %5s %s\n\n", "siempre si", "no");
+	ft_printf("F2: %5s %s\n\n", "siempre si", "no");
+	printf("F1: %0d %c %100d\n\n", 6, 'y', 7);
+	ft_printf("F2: %0d %c %100d\n\n", 6, 'y', 7);
 }
