@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/09 12:40:52 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/10 12:06:53 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,11 @@ void		ft_printstr(va_list args)
 
 	str = va_arg(args, char *);
 	ft_putstr(str);
+}
+
+t_data		*ft_wprintstr(va_list args, t_data *data)
+{
+	data->str = va_arg(args, char *);
+	data->len = ft_strlen(data->str);
+	return (data);
 }

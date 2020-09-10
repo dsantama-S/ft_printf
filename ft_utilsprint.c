@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/09 13:05:15 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/10 13:11:49 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	copy_num(const char *format, int i)
 	return (num);
 }
 
-t_data		*ft_putzeros(const char *format, int i, t_data *data)
+t_data		*ft_putzeros(const char *format, int i, va_list args, t_data *data)
 {
 	int		num;
 	int		count;
@@ -48,7 +48,8 @@ t_data		*ft_putzeros(const char *format, int i, t_data *data)
 	count = 0;
 	num = copy_num(format, i);
 	data->digits = ef_number_digit(num);
-	while (count < (num - 1))
+	ft_width(format, i, args, data);
+	while (count < (num - data->len))
 	{
 		ft_putchar('0');
 		count++;
@@ -56,7 +57,7 @@ t_data		*ft_putzeros(const char *format, int i, t_data *data)
 	return (data);
 }
 
-t_data		*ft_putspaces(const char *format, int i, t_data *data)
+t_data		*ft_putspaces(const char *format, int i, va_list args, t_data *data)
 {
 	int		num;
 	int		count;
@@ -64,7 +65,8 @@ t_data		*ft_putspaces(const char *format, int i, t_data *data)
 	count = 0;
 	num = copy_num(format, i);
 	data->digits = ef_number_digit(num);
-	while (count < (num - 1))
+	ft_width(format, i, args, data);
+	while (count < (num - data->len))
 	{
 		ft_putchar(' ');
 		count++;
