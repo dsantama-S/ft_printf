@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 09:15:23 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/22 10:19:45 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void		ft_printhex(const char *format, int i, va_list args)
 {
-	char	*str;
-	int		nums;
+	char			*str;
+	unsigned		nums;
 
-	nums = va_arg(args, int);
+	nums = va_arg(args, unsigned int);
 	if (format[i] == 'x')
 		str = ft_itoa_base(nums, 16, 'a');
 	if (format[i] == 'X')
@@ -27,9 +27,9 @@ void		ft_printhex(const char *format, int i, va_list args)
 
 t_data		*ft_wprinthex(const char *format, int i, va_list args, t_data *data)
 {
-	int nums;
+	unsigned		nums;
 
-	nums = va_arg(args, int);
+	nums = va_arg(args, unsigned int);
 	if (format[i] == 'x')
 		data->str = ft_itoa_base(nums, 16, 'a');
 	if (format[i] == 'X')
