@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printhex.c                                      :+:      :+:    :+:   */
+/*   ft_printuns.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 09:15:23 by dsantama         ###   ########.fr       */
+/*   Created: 2020/09/22 08:54:02 by dsantama          #+#    #+#             */
+/*   Updated: 2020/09/22 10:02:04 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_printhex(const char *format, int i, va_list args)
+void		ft_printuns(va_list args)
 {
-	char	*str;
-	int		nums;
+	char				*str;
+	unsigned			nums;
 
-	nums = va_arg(args, int);
-	if (format[i] == 'x')
-		str = ft_itoa_base(nums, 16, 'a');
-	if (format[i] == 'X')
-		str = ft_itoa_base(nums, 16, 'A');
+	nums = va_arg(args, unsigned int);
+	str = ft_itoa_base(nums, 10, 'a');
 	ft_putstr(str);
 }
 
-t_data		*ft_wprinthex(const char *format, int i, va_list args, t_data *data)
+t_data		*ft_wprintuns(va_list args, t_data *data)
 {
-	int nums;
+	unsigned nums;
 
-	nums = va_arg(args, int);
-	if (format[i] == 'x')
-		data->str = ft_itoa_base(nums, 16, 'a');
-	if (format[i] == 'X')
-		data->str = ft_itoa_base(nums, 16, 'A');
+	nums = va_arg(args, unsigned int);
+	data->str = ft_itoa_base(nums, 10, 'a');
 	data->len = ft_strlen(data->str);
 	return (data);
 }

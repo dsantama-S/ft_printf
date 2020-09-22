@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 13:12:11 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/10 13:05:49 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/22 09:58:56 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void		ft_width(const char *format, int i, va_list args, t_data *data)
 		ft_wprintstr(args, data);
 	if (format[i] == 'd' || format[i] == 'D' || format[i] == 'i')
 		ft_wprintint(args, data);
+	if (format[i] == 'u' || format[i] == 'U')
+		ft_wprintuns(args, data);
 	if (format[i] == 'c' || format[i] == 'C')
 		ft_wprintchar(args, data);
 	if (format[i] == 'p')

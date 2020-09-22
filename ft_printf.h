@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/10 13:05:38 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/22 09:58:51 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_data
 int					ft_printf(const char *format, ...);
 void				ft_printchar(va_list args);
 void				ft_printint(va_list args);
+void				ft_printuns(va_list args);
 t_data				*ft_percent(const char *format, int i, va_list args,
 t_data *data);
 void				ft_printstr(va_list args);
@@ -57,6 +58,7 @@ t_data *data);
 t_data				*ft_wprintstr(va_list args, t_data *data);
 t_data				*ft_wprintstr(va_list args, t_data *data);
 t_data				*ft_wprintint(va_list args, t_data *data);
+t_data				*ft_wprintuns(va_list args, t_data *data);
 t_data				*ft_wprintchar(va_list args, t_data *data);
 t_data				*ft_wprintptr(va_list args, t_data *data);
 t_data				*ft_wprinthex(const char *format, int i, va_list args,

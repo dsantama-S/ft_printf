@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 11:06:49 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/10 13:27:10 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/22 08:54:18 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_control(const char *format, int i, va_list args, t_data *data)
 		ft_printptr(args);
 	if (format[i] == 'd' || format[i] == 'D' || format[i] == 'i')
 		ft_printint(args);
+	if (format[i] == 'u' || format[i] == 'U')
+		ft_printuns(args);
 	if (format[i] == 'x' || format[i] == 'X')
 		ft_printhex(format, i, args);
 	if (format[i] == '%')
