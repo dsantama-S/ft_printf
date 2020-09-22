@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 09:58:51 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/22 12:26:39 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ t_data				*ft_zero(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_spaces(const char *format, int i, va_list args,
 t_data *data);
+t_data				*ft_stars(const char *format, int i, va_list args,
+t_data *data);
+t_data				*ft_starz(const char *format, int i, va_list args,
+t_data *data);
 void				ft_printptr(va_list args);
 void				ft_width(const char *format, int i, va_list args,
 t_data *data);
@@ -61,6 +65,7 @@ t_data				*ft_wprintint(va_list args, t_data *data);
 t_data				*ft_wprintuns(va_list args, t_data *data);
 t_data				*ft_wprintchar(va_list args, t_data *data);
 t_data				*ft_wprintptr(va_list args, t_data *data);
+t_data				*ft_wprintper(t_data *data);
 t_data				*ft_wprinthex(const char *format, int i, va_list args,
 t_data *data);
 void				ft_check_zero(const char *format, int i, va_list args,

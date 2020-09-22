@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 11:58:33 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/10 13:07:56 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/22 12:28:30 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,28 @@ t_data		*ft_spaces(const char *format, int i, va_list args, t_data *data)
 	if (data->ch != '0')
 		ft_putchar(data->ch);
 	data->total += data->zero;
+	return (data);
+}
+
+t_data		*ft_stars(const char *format, int i, va_list args, t_data *data)
+{
+	int		num;
+	int		count;
+
+	count = 0;
+	num = va_arg(args, int);
+	ft_width(format, i, args, data);
+	while (count < (num - data->len))
+	{
+		ft_putchar(' ');
+		count++;
+	}
+	if (data->mem != '0')
+		ft_putstr(data->ptr);
+	if (data->ch == '0')
+		ft_putstr(data->str);
+	if (data->ch != '0')
+		ft_putchar(data->ch);
+	data->total += 1;
 	return (data);
 }
