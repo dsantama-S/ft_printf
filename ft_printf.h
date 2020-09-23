@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 12:26:39 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/23 10:19:21 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_data
 	int				digits;
 	int				percent;
 	int				len;
+	int				prec;
 	char			*str;
 	char			ch;
 	char			*ptr;
@@ -56,8 +57,12 @@ t_data				*ft_stars(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_starz(const char *format, int i, va_list args,
 t_data *data);
+t_data				*ft_starpr(const char *format, int i, va_list args,
+t_data *data);
 void				ft_printptr(va_list args);
 void				ft_width(const char *format, int i, va_list args,
+t_data *data);
+t_data				*ft_precision(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_wprintstr(va_list args, t_data *data);
 t_data				*ft_wprintstr(va_list args, t_data *data);
@@ -68,6 +73,11 @@ t_data				*ft_wprintptr(va_list args, t_data *data);
 t_data				*ft_wprintper(t_data *data);
 t_data				*ft_wprinthex(const char *format, int i, va_list args,
 t_data *data);
-void				ft_check_zero(const char *format, int i, va_list args,
+void				ft_sprintstr(va_list args, t_data *data);
+void				ft_sprintint(va_list args, t_data *data);
+void				ft_sprintuns(va_list args, t_data *data);
+void				ft_sprinthex(const char *format, int i, va_list args,
+t_data *data);
+void				ft_spec(const char *format, int i, va_list args,
 t_data *data);
 #endif

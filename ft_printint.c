@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:32:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/10 12:28:57 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/23 10:07:31 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,28 @@ t_data		*ft_wprintint(va_list args, t_data *data)
 	data->str = ft_itoa(nums);
 	data->len = ft_strlen(data->str);
 	return (data);
+}
+
+void		ft_sprintint(va_list args, t_data *data)
+{
+	char	*str;
+	int		nums;
+	int		zeros;
+	int		count;
+	int		length;
+
+	count = 0;
+	nums = va_arg(args, int);
+	str = ft_itoa(nums);
+	length = ft_strlen(str);
+	if (data->prec > length)
+	{
+		zeros = (data->prec - length);
+		while (count < zeros)
+		{
+			ft_putchar('0');
+			count++;
+		}
+	}
+	ft_putstr(str);
 }

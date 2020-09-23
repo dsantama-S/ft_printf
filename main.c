@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 12:35:00 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/23 11:11:36 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,43 @@ int		main(void)
 	ft_printf("F2: %032u\n\n", 888);
 	printf("F1: %05u\n\n", -2);
 	ft_printf("F2: %05u\n\n", -2);
+	printf("\n*************** %s ***************\n\n", "Tests de precision");
+	printf("F1: %.4s\n\n", "abcdef");
+	ft_printf("F2: %.4s\n\n", "abcdef");
+	printf("F1: %.4s\n\n", "CARLOS");
+	ft_printf("F2: %.4s\n\n", "CARLOS");
+	printf("F1: %.4i\n\n", 1987);
+	ft_printf("F2: %.4i\n\n", 1987);
+	printf("F1: %.4u\n\n", 12345);
+	ft_printf("F2: %.4u\n\n", 12345);
+	printf("F1: %.4x\n\n", 12345678);
+	ft_printf("F2: %.4x\n\n", 12345678);
+	printf("F1: %.6i\n\n", 1987);
+	ft_printf("F2: %.6i\n\n", 1987);
+	printf("F1: %.4u\n\n", 12);
+	ft_printf("F2: %.4u\n\n", 12);
+	printf("F1: %.5x\n\n", 1234);
+	ft_printf("F2: %.5x\n\n", 1234);
+	printf("F1: %.*s\n\n", 4, "UVWXYZ");
+	ft_printf("F2: %.*s\n\n", 4, "UVWXYZ");
+	printf("F1: %.*s\n\n", 4, "JUANITO");
+	ft_printf("F2: %.*s\n\n", 4, "JUANITO");
+	printf("F1: %.*i\n\n", 4, 1977);
+	ft_printf("F2: %.*i\n\n", 4, 1977);
+	printf("F1: %.*u\n\n", 4, 12345);
+	ft_printf("F2: %.*u\n\n", 4, 12345);
+	printf("F1: %.*x\n\n", 4, 12345678);
+	ft_printf("F2: %.*x\n\n", 4, 12345678);
+	printf("F1: %.*i\n\n", 6, 2011);
+	ft_printf("F2: %.*i\n\n", 6, 2011);
+	printf("F1: %.*u\n\n", 4, 29);
+	ft_printf("F2: %.*u\n\n", 4, 29);
+	printf("F1: %.*x\n\n", 4, 1234);
+	ft_printf("F2: %.*x\n\n", 4, 1234);
+	printf("F1: %.04s\n\n", "JUANITO");
+	ft_printf("F2: %.04s\n\n", "JUANITO");
+	printf("F1: %10.4i\n\n", 1987);
+	ft_printf("F2: %10.4i\n\n", 1987);
 	printf("\n*************** %s ***************\n\n", "Tests primer cero");
 	printf("F1: %00d\n\n", 6);
 	ft_printf("F2: %00d\n\n", 6);

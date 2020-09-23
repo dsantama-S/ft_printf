@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/10 12:06:53 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/23 10:13:26 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,21 @@ t_data		*ft_wprintstr(va_list args, t_data *data)
 	data->str = va_arg(args, char *);
 	data->len = ft_strlen(data->str);
 	return (data);
+}
+
+void		ft_sprintstr(va_list args, t_data *data)
+{
+	char	*str;
+	char	*dest;
+	int		n;
+
+	n = 0;
+	str = va_arg(args, char *);
+	dest = (char *)malloc(ft_strlen(str));
+	while ((n < data->prec) != '\0')
+	{
+		dest[n] = str[n];
+		n++;
+	}
+	ft_putstr(dest);
 }

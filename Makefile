@@ -12,6 +12,7 @@ SRCS	=	ft_printf.c 			\
 			ft_utilsprint.c			\
 			ft_spaces.c				\
 			ft_width.c				\
+			ft_precision.c			\
 			
 OBJS	=	$(SRCS:.c=.o)
 NAME	=	libftprintf.a
