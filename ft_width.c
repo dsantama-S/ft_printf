@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 13:12:11 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/23 11:08:27 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 11:29:11 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void		ft_width(const char *format, int i, va_list args, t_data *data)
 {
-	data->mem = '0';
-	data->ch = '0';
 	i += data->digits;
 	if (format[i] == 's')
 		ft_wprintstr(args, data);
@@ -32,4 +30,9 @@ void		ft_width(const char *format, int i, va_list args, t_data *data)
 		ft_wprinthex(format, i, args, data);
 	if (format[i] == '%')
 		ft_wprintper(data);
+	if (format[i] == '.')
+	{
+		data->pr = '1';
+		ft_precision(format, i, args, data);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:50:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/08 13:46:08 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 11:25:58 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_data	*ft_parse(const char *format, t_data *data, va_list args, int n)
 	{
 		if (format[i] == '%')
 		{
+			base_zero(data);
 			ft_control(format, i, args, data);
 			i += data->total;
 			ft_percent(format, i, args, data);

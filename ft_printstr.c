@@ -6,11 +6,12 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/23 10:13:26 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 12:28:29 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void		ft_printstr(va_list args)
 {
@@ -32,14 +33,24 @@ void		ft_sprintstr(va_list args, t_data *data)
 	char	*str;
 	char	*dest;
 	int		n;
+	int		size_dest;
 
 	n = 0;
+	size_dest = data->prec;
 	str = va_arg(args, char *);
 	dest = (char *)malloc(ft_strlen(str));
-	while ((n < data->prec) != '\0')
+	while ((n < size_dest) != '\0')
 	{
 		dest[n] = str[n];
 		n++;
 	}
-	ft_putstr(dest);
+	data->len = 2;
+	if (data->pr == '1')
+	{
+		data->str = dest;
+		data->total += 1;
+	}
+	else
+		ft_putstr(dest);
+	free(dest);
 }

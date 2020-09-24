@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 10:44:56 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 10:56:06 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ t_data		*ft_putspaces(const char *format, int i, va_list args, t_data *data)
 		ft_putchar(' ');
 		count++;
 	}
+	if (!(!data->szero))
+		ft_putstr(data->szero);
 	return (data);
 }
 
