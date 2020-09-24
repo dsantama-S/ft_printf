@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 11:12:59 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 13:51:51 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,10 @@ void				ft_sprintint(va_list args, t_data *data);
 void				ft_sprintuns(va_list args, t_data *data);
 void				ft_sprinthex(const char *format, int i, va_list args,
 t_data *data);
-void				prec_zeros(int length, t_data *data);
+void				prec_zeros(int nums, int length, t_data *data);
 t_data				*base_zero(t_data *data);
+void				ft_putstrn(const char *s);
+void 				analyze_prec(int nums, int length, t_data *data);
 void				ft_spec(const char *format, int i, va_list args,
 t_data *data);
 #endif

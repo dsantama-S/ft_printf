@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 09:39:53 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 12:45:55 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 		str = ft_itoa_base(nums, 16, 'A');
 	length = ft_strlen(str);
 	if (data->prec > length)
-		prec_zeros(length, data);
+		prec_zeros(nums, length, data);
 	if (data->pr == '1')
 	{
 		data->str = str;

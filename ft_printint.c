@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:32:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 11:40:16 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 13:52:53 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,17 @@ void		ft_sprintint(va_list args, t_data *data)
 	str = ft_itoa(nums);
 	length = ft_strlen(str);
 	data->len = length;
-	if (data->prec > length)
-		prec_zeros(length, data);
+	analyze_prec(nums, length, data);
 	if (data->pr == '1')
 	{
 		data->str = str;
 		data->total += 1;
 	}
 	else
-		ft_putstr(str);
+	{
+		if (nums < 0 && data->prec != 1)
+			ft_putstrn(str);
+		else
+			ft_putstr(str);
+	}
 }

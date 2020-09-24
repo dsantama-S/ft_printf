@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 12:10:18 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 13:58:53 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,6 +255,16 @@ int		main(void)
 	ft_printf("F2: %10.4x\n\n", 1987);
 	printf("F1: %10.6x\n\n", 1987);
 	ft_printf("F2: %10.6x\n\n", 1987);
+	printf("F1: %.4i\n\n", -3);
+	ft_printf("F2: %.4i\n\n", -3);
+	printf("F1: %.1i\n\n", -3);
+	ft_printf("F2: %.1i\n\n", -3);
+	printf("F1: %.2i\n\n", -3);
+	ft_printf("F2: %.2i\n\n", -3);
+	printf("F1: %10.4i\n\n", -3);
+	ft_printf("F2: %10.4i\n\n", -3);
+	printf("F1: %10.4x\n\n", -3);
+	ft_printf("F2: %10.4x\n\n", -3);
 	printf("F1: %10.2s\n\n", "JUANITO");
 	ft_printf("F2: %10.2s\n\n", "JUANITO");
 	printf("F1: %.04s\n\n", "JUANITO");

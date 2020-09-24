@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 08:54:02 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 09:47:40 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/24 13:30:39 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,19 @@ void		ft_sprintuns(va_list args, t_data *data)
 	length = ft_strlen(str);
 	data->len = length;
 	if (data->prec > length)
-		prec_zeros(length, data);
+		prec_zeros(nums, length, data);
 	if (data->pr == '1')
 	{
 		data->str = str;
 		data->total += 1;
 	}
 	else
-		ft_putstr(str);
+	{
+		if (nums < 0)
+		{
+			ft_putstrn(str);
+		}
+		else
+			ft_putstr(str);
+	}
 }
