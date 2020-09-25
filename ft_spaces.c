@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 11:58:33 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/22 12:28:30 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 13:41:45 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ t_data		*ft_spaces(const char *format, int i, va_list args, t_data *data)
 		data->zero = 1;
 	if (data->mem != '0')
 		ft_putstr(data->ptr);
-	if (data->ch == '0')
+	if (data->ch == '0' && data->negative == '0')
 		ft_putstr(data->str);
+	if (data->ch == '0' && data->negative == '1')
+		ft_putstrn(data->str);
 	if (data->ch != '0')
 		ft_putchar(data->ch);
 	data->total += data->zero;

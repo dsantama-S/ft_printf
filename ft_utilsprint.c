@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 10:56:06 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 13:51:56 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,24 @@ t_data		*ft_putzeros(const char *format, int i, va_list args, t_data *data)
 	count = 0;
 	num = copy_num(format, i);
 	data->digits = ef_number_digit(num);
+	data->digits_prec = data->digits;
 	ft_width(format, i, args, data);
-	while (count < (num - data->len))
+	if (data->pr == '1')
 	{
-		ft_putchar('0');
-		count++;
+		while (count < (num - data->len))
+		{
+			ft_putchar(' ');
+			count++;
+		}
 	}
+	else
+		while (count < (num - data->len))
+		{
+			ft_putchar('0');
+			count++;
+		}
+	if (!(!data->szero))
+		ft_putstr(data->szero);
 	return (data);
 }
 
@@ -65,6 +77,7 @@ t_data		*ft_putspaces(const char *format, int i, va_list args, t_data *data)
 	count = 0;
 	num = copy_num(format, i);
 	data->digits = ef_number_digit(num);
+	data->digits_prec = data->digits;
 	ft_width(format, i, args, data);
 	while (count < (num - data->len))
 	{

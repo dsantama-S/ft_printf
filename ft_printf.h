@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 13:51:51 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 13:21:17 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ typedef struct		s_data
 	int				total;
 	int				zero;
 	int				digits;
+	int				digits_prec;
 	int				percent;
 	int				len;
 	int				prec;
 	char			*str;
-	char			ch;
 	char			*ptr;
 	char			*szero;
+	char			true_zero;
+	char			ch;
 	char			mem;
 	char			pr;
+	char			negative;
 }					t_data;
 
 int					ft_printf(const char *format, ...);
@@ -83,7 +86,7 @@ t_data *data);
 void				prec_zeros(int nums, int length, t_data *data);
 t_data				*base_zero(t_data *data);
 void				ft_putstrn(const char *s);
-void 				analyze_prec(int nums, int length, t_data *data);
+void				analyze_prec(int nums, int length, t_data *data);
 void				ft_spec(const char *format, int i, va_list args,
 t_data *data);
 #endif

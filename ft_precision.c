@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 08:36:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 11:39:31 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 13:36:28 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,19 @@ t_data		*ft_precision(const char *format, int i, va_list args, t_data *data)
 	i++;
 	if (format[i] == '0')
 	{
-		data->total += 1;
+		data->total++;
 		i++;
 	}
+	if ((format[i] == 'i') || (format[i] == 'u') || (format[i] == 'x') ||
+	(format[i] == 's'))
+		data->total++;
 	if (format[i] >= '1' && format[i] <= '9')
 	{
 		data->prec = copy_num(format, i);
 		data->digits = ef_number_digit(data->prec);
 		ft_spec(format, i, args, data);
 		if (data->digits > 1)
-		{
 			data->zero = data->digits;
-		}
 		else
 			data->zero = 2;
 	}

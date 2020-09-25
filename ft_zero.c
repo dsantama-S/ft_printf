@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:34:34 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/23 10:16:22 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 14:02:49 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static t_data	*ft_val(int i, t_data *data)
 	}
 	else
 		data->zero = 2;
-	if (data->ch == '0')
+	if (data->ch == '0' && data->negative == '0')
 		ft_putstr(data->str);
+	if (data->ch == '0' && data->negative == '1')
+		ft_putstrn(data->str);
 	if (data->ch != '0')
 		ft_putchar(data->ch);
 	data->total += data->zero;

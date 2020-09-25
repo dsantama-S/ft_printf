@@ -17,6 +17,7 @@ SRC = 	ft_atoi.c \
 		ft_putstr.c \
 		ft_putchar.c \
 		ft_putnbr_fd.c \
+		ft_strncpy.c	\
 		ft_putchar_fd.c \
 		ft_putendl_fd.c \
 		ft_split.c \

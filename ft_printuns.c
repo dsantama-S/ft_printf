@@ -6,11 +6,39 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 08:54:02 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 13:30:39 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 12:20:08 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	prec_zeros_uns(int length, t_data *data)
+{
+	int		zeros;
+	int		count;
+	char	*str;
+
+	count = 0;
+	zeros = (data->prec - length);
+	str = malloc(zeros);
+	if (data->pr == '1')
+	{
+		while (count < zeros)
+		{
+			str[count] = '0';
+			count++;
+		}
+		data->len = length + count;
+		data->szero = str;
+		free(str);
+	}
+	else
+		while (count < zeros)
+		{
+			ft_putchar('0');
+			count++;
+		}
+}
 
 void		ft_printuns(va_list args)
 {
@@ -43,18 +71,19 @@ void		ft_sprintuns(va_list args, t_data *data)
 	length = ft_strlen(str);
 	data->len = length;
 	if (data->prec > length)
-		prec_zeros(nums, length, data);
+		prec_zeros_uns(length, data);
 	if (data->pr == '1')
 	{
 		data->str = str;
-		data->total += 1;
+		if (data->digits_prec > 1)
+			data->total += 1;
+		if (data->digits_prec > 2)
+			data->total += data->digits_prec - 2;
 	}
 	else
 	{
 		if (nums < 0)
-		{
 			ft_putstrn(str);
-		}
 		else
 			ft_putstr(str);
 	}

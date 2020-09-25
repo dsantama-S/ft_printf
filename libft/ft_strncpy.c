@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 11:36:38 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 13:08:56 by dsantama         ###   ########.fr       */
+/*   Created: 2020/09/25 10:27:06 by dsantama          #+#    #+#             */
+/*   Updated: 2020/09/25 10:29:15 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(const char *s)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
-	if (!(!s))
+	while (src[i] != '\0' && i < n)
 	{
-		while (s[i] != '\0')
+		dest[i] = src[i];
+		++i;
+	}
+	if (i < n && src[i] == '\0')
+	{
+		while (dest[i] != '\0')
 		{
-			ft_putchar(s[i]);
-			i++;
+			dest[i] = '\0';
+			++i;
 		}
 	}
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/24 13:58:53 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/25 13:57:39 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ int		main(void)
 	printf("F1: %32x %c %5x\n\n", 11, 'y', 5);
 	ft_printf("F2: %32x %c %5x\n\n", 11, 'y', 5);
 	printf("F1: %10d si\n\n", 60);
-	ft_printf("F2: %10d si\n\n", 60);
 	printf("F1: %32i\n\n", 777);
 	ft_printf("F2: %32i\n\n", 777);
 	printf("F1: %10u si\n\n", 80);
@@ -263,8 +262,73 @@ int		main(void)
 	ft_printf("F2: %.2i\n\n", -3);
 	printf("F1: %10.4i\n\n", -3);
 	ft_printf("F2: %10.4i\n\n", -3);
+	printf("F1: %10.1i\n\n", -3);
+	ft_printf("F2: %10.1i\n\n", -3);
+	printf("F1: %10.2i\n\n", -3);
+	ft_printf("F2: %10.2i\n\n", -3);
+	printf("F1: %10.4i\n\n", -29878);
+	ft_printf("F2: %10.4i\n\n", -29878);
+	printf("F1: %10.1i\n\n", -1987);
+	ft_printf("F2: %10.1i\n\n", -1987);
+	printf("F1: %10.2i\n\n", -30);
+	ft_printf("F2: %10.2i\n\n", -30);
+	printf("F1: %10.4i\n\n", -29872228);
+	ft_printf("F2: %10.4i\n\n", -29872228);
+	printf("F1: %10.2i\n\n", -1987);
+	ft_printf("F2: %10.2i\n\n", -1987);
+	printf("F1: %10.87i\n\n", -30);
+	ft_printf("F2: %10.87i\n\n", -30);
+	printf("F1: %20.11u\n\n", -3);
+	ft_printf("F2: %20.11u\n\n", -3);
+	printf("F1: %20.4u\n\n", -3);
+	ft_printf("F2: %20.4u\n\n", -3);
 	printf("F1: %10.4x\n\n", -3);
 	ft_printf("F2: %10.4x\n\n", -3);
+	printf("F1: %10.9x\n\n", -3);
+	ft_printf("F2: %10.9x\n\n", -3);
+	printf("F1: %20.10x\n\n", -3);
+	ft_printf("F2: %20.10x\n\n", -3);
+	printf("F1: %10.2x\n\n", -3);
+	ft_printf("F2: %10.2x\n\n", -3);
+	printf("F1: %10.1x\n\n", -3);
+	ft_printf("F2: %10.1x\n\n", -3);
+	printf("F1: %.4i\n\n", -2372);
+	ft_printf("F2: %.4i\n\n", -2372);
+	printf("F1: %8.3i\n\n", -8473);
+	ft_printf("F2: %8.3i\n\n", -8473);
+	printf("F1: %9.2i\n\n", -1987);
+	ft_printf("F2: %9.2i\n\n", -1987);
+	printf("F1: %100.2i\n\n", -1987);
+	ft_printf("F2: %100.2i\n\n", -1987);
+	printf("F1: %1000.2i\n\n", -1987);
+	ft_printf("F2: %1000.2i\n\n", -1987);
+	printf("F1: %010.4i\n\n", 1987);
+	ft_printf("F2: %010.4i\n\n", 1987);
+	printf("F1: %010.6i\n\n", 1987);
+	ft_printf("F2: %010.6i\n\n", 1987);
+	printf("F1: %010.6i %.6i\n\n", 1987, 2020);
+	ft_printf("F2: %010.6i %.6i\n\n", 1987, 2020);
+	printf("F1: %010.4u\n\n", 2001);
+	ft_printf("F2: %010.4u\n\n", 2001);
+	printf("F1: %010.6u\n\n", 2001);
+	ft_printf("F2: %010.6u\n\n", 2001);
+	printf("F1: %010.4x\n\n", 1987);
+	ft_printf("F2: %010.4x\n\n", 1987);
+	printf("F1: %010.6x\n\n", 1987);
+	ft_printf("F2: %010.6x\n\n", 1987);
+	printf("F1: %08.3i\n\n", -8473);
+	ft_printf("F2: %08.3i\n\n", -8473);
+	printf("F1: %09.2i\n\n", -1987);
+	ft_printf("F2: %09.2i\n\n", -1987);
+	printf("F1: %0100.2i\n\n", -1987);
+	ft_printf("F2: %0100.2i\n\n", -1987);
+	ft_printf("F2: %10d si\n\n", 60);
+	printf("F1: %10d si\n\n", -60);
+	ft_printf("F2: %10d si\n\n", -60);
+	printf("F1: %010d si\n\n", -60);
+	ft_printf("F2: %010d si\n\n", -60);
+	printf("F1: %s!\n\n", NULL);
+	ft_printf("F2: %s!\n\n", NULL);
 	printf("F1: %10.2s\n\n", "JUANITO");
 	ft_printf("F2: %10.2s\n\n", "JUANITO");
 	printf("F1: %.04s\n\n", "JUANITO");
