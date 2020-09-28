@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 11:58:33 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 12:38:17 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:38:08 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,7 @@ static int	ef_number_digit(int n)
 		return (1 + ef_number_digit(n / 10));
 }
 
-static int	copy_num(const char *format, int i)
-{
-	char	*str;
-	int		n;
-	int		num;
-
-	n = 0;
-	num = 0;
-	str = (char *)malloc(ft_strlen(format));
-	while (format[i] != (format[i] >= '0' && format[i] <= '9'))
-	{
-		str[n] = format[i];
-		n++;
-		i++;
-	}
-	num = ft_atoi(str);
-	free(str);
-	return (num);
-}
-
-static void	num_or_star(const char *format, int i, t_data *data)
+void		num_or_star(const char *format, int i, t_data *data)
 {
 	int n;
 

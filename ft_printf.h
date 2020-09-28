@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 12:47:57 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:36:58 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_data
 	char			ch;
 	char			mem;
 	char			pr;
+	char			error;
 	char			negative;
 }					t_data;
 
@@ -84,7 +85,11 @@ void				ft_sprintint(va_list args, t_data *data);
 void				ft_sprintuns(va_list args, t_data *data);
 void				ft_sprinthex(const char *format, int i, va_list args,
 t_data *data);
-t_data				*ft_dash(const char *format, int i, va_list args, t_data *data);
+t_data				*ft_dash(const char *format, int i, va_list args,
+t_data *data);
+void				num_or_star(const char *format, int i, t_data *data);
+int					copy_num(const char *format, int i);
+t_data				*error(const char *format, int i, t_data *data);
 void				prec_zeros(int nums, int length, t_data *data);
 t_data				*base_zero(t_data *data);
 void				ft_putstrn(const char *s);

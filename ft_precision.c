@@ -6,13 +6,13 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 08:36:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 10:59:45 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:47:12 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ef_number_digit(int n)
+static int		ef_number_digit(int n)
 {
 	if (n > -10 && n < 10)
 		return (1);
@@ -20,27 +20,18 @@ static int	ef_number_digit(int n)
 		return (1 + ef_number_digit(n / 10));
 }
 
-static int	copy_num(const char *format, int i)
+static void		ft_numpr(const char *format, int i, va_list args, t_data *data)
 {
-	char	*str;
-	int		n;
-	int		num;
-
-	n = 0;
-	num = 0;
-	str = (char *)malloc(ft_strlen(format));
-	while (format[i] != (format[i] >= '0' && format[i] <= '9'))
-	{
-		str[n] = format[i];
-		n++;
-		i++;
-	}
-	num = ft_atoi(str);
-	free(str);
-	return (num);
+	data->prec = copy_num(format, i);
+	data->digits = ef_number_digit(data->prec);
+	ft_spec(format, i, args, data);
+	if (data->digits > 1)
+		data->zero = data->digits;
+	else
+		data->zero = 2;
 }
 
-void		ft_spec(const char *format, int i, va_list args, t_data *data)
+void			ft_spec(const char *format, int i, va_list args, t_data *data)
 {
 	i += data->digits;
 	if (format[i] == 'c' || format[i] == 'C')
@@ -59,7 +50,8 @@ void		ft_spec(const char *format, int i, va_list args, t_data *data)
 		ft_putchar('%');
 }
 
-t_data		*ft_precision(const char *format, int i, va_list args, t_data *data)
+t_data			*ft_precision(const char *format, int i, va_list args,
+t_data *data)
 {
 	i++;
 	if (format[i] == '0')
@@ -67,18 +59,11 @@ t_data		*ft_precision(const char *format, int i, va_list args, t_data *data)
 		data->total += 1;
 		i++;
 	}
-	if (format[i] == ('i' | 'u' | 'x' | 's'))
-		data->total += 1;
+	error(format, i, data);
+	if (data->error == '1')
+		return (data);
 	if (format[i] >= '1' && format[i] <= '9')
-	{
-		data->prec = copy_num(format, i);
-		data->digits = ef_number_digit(data->prec);
-		ft_spec(format, i, args, data);
-		if (data->digits > 1)
-			data->zero = data->digits;
-		else
-			data->zero = 2;
-	}
+		ft_numpr(format, i, args, data);
 	if (format[i] == '*')
 	{
 		ft_starpr(format, i, args, data);
@@ -88,7 +73,8 @@ t_data		*ft_precision(const char *format, int i, va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_starpr(const char *format, int i, va_list args, t_data *data)
+t_data			*ft_starpr(const char *format, int i, va_list args,
+t_data *data)
 {
 	data->prec = va_arg(args, int);
 	data->digits = 1;

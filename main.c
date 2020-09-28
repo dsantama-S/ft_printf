@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 12:39:23 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:11:35 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,6 +424,35 @@ int		main(void)
 	ft_printf("F2: %3.7s%7.7s\n\n", "hello", "world");
 	printf("F1: %.04s\n\n", "JUANITO");
 	ft_printf("F2: %.04s\n\n", "JUANITO");
+	printf("\n*************** %s ***************\n\n", "Tests de dash");
+	printf("F1: %-10s si\n\n", "Hola");
+	ft_printf("F2: %-10s si\n\n", "Hola");
+	printf("F1: %-10d si\n\n", 7);
+	ft_printf("F2: %-10d si\n\n", 7);
+	printf("F1: %-10.*d si\n\n", 13, 7);
+	ft_printf("F2: %-10.*d si\n\n", 13, 7);
+	printf("F1: %-*.3d star\n\n", 13, 7);
+	ft_printf("F2: %-*.3d star\n\n", 13, 7);
+	printf("F1: %-0*.4d star\n\n", 13, 7);
+	ft_printf("F2: %-0*.4d star\n\n", 13, 7);
+	printf("F1: %0-*.5d star\n\n", 13, 7);
+	ft_printf("F2: %0-*.5d star\n\n", 13, 7);
+	printf("F1: %-*.1d star\n\n", 23, 7);
+	ft_printf("F2: %-*.1d star\n\n", 23, 7);
+	printf("F1: %-10p si\n\n", &p);
+	ft_printf("F2: %-10p si\n\n", &p);
+	printf("F1: %-10.1d si\n\n", -7);
+	ft_printf("F2: %-10.1d si\n\n", -7);
+	printf("F1: %-10.2s si\n\n", "Hola");
+	ft_printf("F2: %-10.2s si\n\n", "Hola");
+	printf("F1: %-10.2d si\n\n", -7);
+	ft_printf("F2: %-10.2d si\n\n", -7);
+	printf("F1: %-10.3d si\n\n", 7);
+	ft_printf("F2: %-10.3d si\n\n", 7);
+	printf("F1: %-10.3d si\n\n", -7);
+	ft_printf("F2: %-10.3d si\n\n", -7);
+	printf("F1: %-10.04s\n\n", "JUANITO");
+	ft_printf("F2: %-10.04s\n\n", "JUANITO");
 	printf("\n*************** %s ***************\n\n", "Tests primer cero");
 	printf("F1: %00d\n\n", 6);
 	ft_printf("F2: %00d\n\n", 6);

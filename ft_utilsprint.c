@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 12:17:26 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:38:21 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ef_number_digit(int n)
 		return (1 + ef_number_digit(n / 10));
 }
 
-static int	copy_num(const char *format, int i)
+int			copy_num(const char *format, int i)
 {
 	char	*str;
 	int		n;

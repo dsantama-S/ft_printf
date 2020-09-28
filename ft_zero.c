@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:34:34 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 12:00:53 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:04:02 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 {
 	i++;
 	data->from_zero = '1';
+	if (format[i] == '-')
+	{
+		ft_dash(format, i, args, data);
+		data->total += 1;
+		return (data);
+	}
 	if (format[i] == '0')
 	{
 		ft_control(format, i, args, data);
