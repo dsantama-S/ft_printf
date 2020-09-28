@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 13:21:17 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 12:47:57 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		s_data
 	char			*ptr;
 	char			*szero;
 	char			true_zero;
+	char			from_zero;
 	char			ch;
 	char			mem;
 	char			pr;
@@ -83,6 +84,7 @@ void				ft_sprintint(va_list args, t_data *data);
 void				ft_sprintuns(va_list args, t_data *data);
 void				ft_sprinthex(const char *format, int i, va_list args,
 t_data *data);
+t_data				*ft_dash(const char *format, int i, va_list args, t_data *data);
 void				prec_zeros(int nums, int length, t_data *data);
 t_data				*base_zero(t_data *data);
 void				ft_putstrn(const char *s);

@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 09:06:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 10:02:37 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 09:14:01 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_data			*base_zero(t_data *data)
 	data->ch = '0';
 	data->pr = '0';
 	data->true_zero = '0';
+	data->from_zero = '0';
 	data->len = 0;
 	data->str = NULL;
 	data->szero = NULL;

@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:31:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 13:01:19 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 12:46:32 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void		ft_flags(const char *format, int i, va_list args, t_data *data)
 		ft_stars(format, i, args, data);
 	if (format[i] == '.')
 		ft_precision(format, i, args, data);
+	if (format[i] == '-')
+		ft_dash(format, i, args, data);
 }

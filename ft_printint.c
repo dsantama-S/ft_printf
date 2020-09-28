@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:32:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 12:14:59 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 09:06:00 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ t_data		*ft_wprintint(va_list args, t_data *data)
 	int nums;
 
 	nums = va_arg(args, int);
+	if (nums < 0 && data->from_zero == '1')
+	{
+		ft_putchar('-');
+		data->negative = '1';
+	}
 	data->str = ft_itoa(nums);
 	data->len = ft_strlen(data->str);
 	return (data);

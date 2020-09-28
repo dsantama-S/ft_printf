@@ -6,11 +6,32 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:34:34 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 14:02:49 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/28 12:00:53 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void		putzeros(int num, t_data *data)
+{
+	int		count;
+
+	count = 0;
+	if (data->pr == '1')
+	{
+		while (count < (num - data->len))
+		{
+			ft_putchar(' ');
+			count++;
+		}
+	}
+	else
+		while (count < (num - data->len))
+		{
+			ft_putchar('0');
+			count++;
+		}
+}
 
 static t_data	*ft_val(int i, t_data *data)
 {
@@ -34,6 +55,7 @@ static t_data	*ft_val(int i, t_data *data)
 t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 {
 	i++;
+	data->from_zero = '1';
 	if (format[i] == '0')
 	{
 		ft_control(format, i, args, data);
@@ -54,16 +76,12 @@ t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 t_data			*ft_starz(const char *format, int i, va_list args, t_data *data)
 {
 	int		num;
-	int		count;
 
-	count = 0;
 	num = va_arg(args, int);
 	ft_width(format, i, args, data);
-	while (count < (num - data->len))
-	{
-		ft_putchar('0');
-		count++;
-	}
+	putzeros(num, data);
+	if (!(!data->szero))
+		ft_putstr(data->szero);
 	if (data->ch == '0')
 		ft_putstr(data->str);
 	if (data->ch != '0')

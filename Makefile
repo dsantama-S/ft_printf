@@ -13,6 +13,7 @@ SRCS	=	ft_printf.c 			\
 			ft_spaces.c				\
 			ft_width.c				\
 			ft_precision.c			\
+			ft_dash.c				\
 			ft_tools.c				\
 			
 OBJS	=	$(SRCS:.c=.o)
