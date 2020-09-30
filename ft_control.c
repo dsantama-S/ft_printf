@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 11:06:49 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/23 08:35:48 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:42:48 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	ft_control(const char *format, int i, va_list args, t_data *data)
 {
 	i++;
+	little_space(format, i, data);
+	i += data->space;
 	if (format[i] == 'c' || format[i] == 'C')
 		ft_printchar(args);
 	if (format[i] == 's')
@@ -27,9 +29,11 @@ void	ft_control(const char *format, int i, va_list args, t_data *data)
 		ft_printuns(args);
 	if (format[i] == 'x' || format[i] == 'X')
 		ft_printhex(format, i, args);
+	if (format[i] == 'o' || format[i] == 'O')
+		ft_printoct(args);
 	if (format[i] == '%')
 		ft_putchar('%');
-	data->total = 2;
+	data->total = 2 + data->space;
 	if ((format[i] >= '0' && format[i] <= '9') ||
 	(format[i] == '.' || format[i] == '-' || format[i] == '*'))
 		ft_flags(format, i, args, data);

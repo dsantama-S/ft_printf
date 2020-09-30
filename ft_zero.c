@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:34:34 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 14:04:02 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:40:33 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,32 @@ static void		putzeros(int num, t_data *data)
 			ft_putchar('0');
 			count++;
 		}
+	if (!(!data->szero))
+		ft_putstr(data->szero);
 }
 
-static t_data	*ft_val(int i, t_data *data)
+static void		putspaces(int num, t_data *data)
 {
+	int count;
+
+	count = 0;
+	while (count < (num - data->len))
+	{
+		ft_putchar(' ');
+		count++;
+	}
+	if (!(!data->szero))
+		ft_putstr(data->szero);
+}
+
+static t_data	*ft_val(const char *format, int i, va_list args, t_data *data)
+{
+	if (format[i] == '0')
+	{
+		ft_control(format, i, args, data);
+		data->total += 2;
+		return (data);
+	}
 	if (data->digits > 1)
 	{
 		i += (data->digits - 1);
@@ -47,7 +69,7 @@ static t_data	*ft_val(int i, t_data *data)
 	if (data->ch == '0' && data->negative == '1')
 		ft_putstrn(data->str);
 	if (data->ch != '0')
-		ft_putchar(data->ch);
+		ft_putchar(data->mychar);
 	data->total += data->zero;
 	return (data);
 }
@@ -56,6 +78,9 @@ t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 {
 	i++;
 	data->from_zero = '1';
+	after_flag(format, i, args, data);
+	if (data->from_zero == '0')
+		return (data);
 	if (format[i] == '-')
 	{
 		ft_dash(format, i, args, data);
@@ -64,8 +89,7 @@ t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 	}
 	if (format[i] == '0')
 	{
-		ft_control(format, i, args, data);
-		data->total += 2;
+		ft_val(format, i, args, data);
 		return (data);
 	}
 	if (format[i] >= '1' && format[i] <= '9')
@@ -75,7 +99,7 @@ t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 		ft_starz(format, i, args, data);
 		return (data);
 	}
-	ft_val(i, data);
+	ft_val(format, i, args, data);
 	return (data);
 }
 
@@ -83,15 +107,24 @@ t_data			*ft_starz(const char *format, int i, va_list args, t_data *data)
 {
 	int		num;
 
+	data->digits = 1;
 	num = va_arg(args, int);
+	if (num < 0)
+	{
+		num *= -1;
+		data->negstar = '1';
+	}
 	ft_width(format, i, args, data);
-	putzeros(num, data);
-	if (!(!data->szero))
-		ft_putstr(data->szero);
-	if (data->ch == '0')
+	if (data->negstar == '0')
+		putzeros(num, data);
+	if (data->ch == '0' && data->negative == '1')
+		ft_putstrn(data->str);
+	if (data->ch == '0' && data->negative == '0')
 		ft_putstr(data->str);
 	if (data->ch != '0')
-		ft_putchar(data->ch);
+		ft_putchar(data->mychar);
+	if (data->negstar == '1')
+		putspaces(num, data);
 	data->total += 2;
 	return (data);
 }

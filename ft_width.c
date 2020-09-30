@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 13:12:11 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 09:57:41 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:40:35 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void		ft_width(const char *format, int i, va_list args, t_data *data)
 		ft_wprintptr(args, data);
 	if (format[i] == 'x' || format[i] == 'X')
 		ft_wprinthex(format, i, args, data);
+	if (format[i] == 'o' || format[i] == 'O')
+		ft_wprintoct(args, data);
 	if (format[i] == '%')
 		ft_wprintper(data);
 	if (format[i] == '.')

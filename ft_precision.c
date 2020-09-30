@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 08:36:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 14:47:12 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:13:56 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void			ft_spec(const char *format, int i, va_list args, t_data *data)
 		ft_sprintuns(args, data);
 	if (format[i] == 'x' || format[i] == 'X')
 		ft_sprinthex(format, i, args, data);
+	if (format[i] == 'o' || format[i] == 'O')
+		ft_sprintoct(args, data);
 	if (format[i] == '%')
 		ft_putchar('%');
 }
@@ -58,6 +60,8 @@ t_data *data)
 	{
 		data->total += 1;
 		i++;
+		error_prec_zeros(format, i, data);
+		i += data->count;
 	}
 	error(format, i, data);
 	if (data->error == '1')

@@ -7,6 +7,7 @@ SRCS	=	ft_printf.c 			\
 			ft_printint.c			\
 			ft_printuns.c			\
 			ft_printhex.c			\
+			ft_printoct.c			\
 			ft_zero.c				\
 			ft_flags.c				\
 			ft_utilsprint.c			\

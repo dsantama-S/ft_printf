@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 13:01:48 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 14:37:21 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:43:41 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static t_data	*ft_val(const char *format, int i, va_list args, t_data *data)
 	if (data->ch == '0' && data->negative == '1')
 		ft_putstrn(data->str);
 	if (data->ch != '0')
-		ft_putchar(data->ch);
+		ft_putchar(data->mychar);
 	data->total += data->zero;
 	return (data);
 }
 
-static t_data	*ft_stardash(const char *format, int i, va_list args,
+t_data			*ft_stardash(const char *format, int i, va_list args,
 t_data *data)
 {
 	int		num;
@@ -53,7 +53,27 @@ t_data *data)
 	count = 0;
 	data->digits = 1;
 	num = va_arg(args, int);
+	if (num < 0)
+		num *= -1;
 	num_or_star(format, i, data);
+	ft_val(format, i, args, data);
+	while (count < (num - data->len))
+	{
+		ft_putchar(' ');
+		count++;
+	}
+	return (data);
+}
+
+static t_data	*dash_num(const char *format, int i, va_list args, t_data *data)
+{
+	int count;
+	int num;
+
+	count = 0;
+	num = copy_num(format, i);
+	data->digits = ef_number_digit(num);
+	data->digits_prec = data->digits;
 	ft_val(format, i, args, data);
 	while (count < (num - data->len))
 	{
@@ -65,29 +85,21 @@ t_data *data)
 
 t_data			*ft_dash(const char *format, int i, va_list args, t_data *data)
 {
-	int count;
-	int num;
-
 	i++;
-	count = 0;
 	if (format[i] == '0')
 	{
 		i++;
 		data->total += 1;
 	}
+	after_flag(format, i, args, data);
 	if (format[i] >= '1' && format[i] <= '9')
-	{
-		num = copy_num(format, i);
-		data->digits = ef_number_digit(num);
-		data->digits_prec = data->digits;
-		ft_val(format, i, args, data);
-		while (count < (num - data->len))
-		{
-			ft_putchar(' ');
-			count++;
-		}
-	}
+		dash_num(format, i, args, data);
 	if (format[i] == '*')
 		ft_stardash(format, i, args, data);
+	if (format[i] == '.')
+	{
+		ft_precision(format, i, args, data);
+		data->total += 1;
+	}
 	return (data);
 }

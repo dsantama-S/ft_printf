@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 14:36:58 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:38:51 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,21 @@ typedef struct		s_data
 {
 	int				total;
 	int				zero;
+	int				count;
 	int				digits;
 	int				digits_prec;
 	int				percent;
 	int				len;
 	int				prec;
+	int				space;
 	char			*str;
 	char			*ptr;
 	char			*szero;
 	char			true_zero;
 	char			from_zero;
+	char			negstar;
 	char			ch;
+	char			mychar;
 	char			mem;
 	char			pr;
 	char			error;
@@ -44,6 +48,8 @@ int					ft_printf(const char *format, ...);
 void				ft_printchar(va_list args);
 void				ft_printint(va_list args);
 void				ft_printuns(va_list args);
+void				ft_printoct(va_list args);
+t_data				*little_space(const char *format, int i, t_data *data);
 t_data				*ft_percent(const char *format, int i, va_list args,
 t_data *data);
 void				ft_printstr(va_list args);
@@ -78,18 +84,25 @@ t_data				*ft_wprintuns(va_list args, t_data *data);
 t_data				*ft_wprintchar(va_list args, t_data *data);
 t_data				*ft_wprintptr(va_list args, t_data *data);
 t_data				*ft_wprintper(t_data *data);
+t_data				*ft_wprintoct(va_list args, t_data *data);
 t_data				*ft_wprinthex(const char *format, int i, va_list args,
 t_data *data);
 void				ft_sprintstr(va_list args, t_data *data);
 void				ft_sprintint(va_list args, t_data *data);
 void				ft_sprintuns(va_list args, t_data *data);
+void				ft_sprintoct(va_list args, t_data *data);
 void				ft_sprinthex(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_dash(const char *format, int i, va_list args,
 t_data *data);
+t_data				*ft_stardash(const char *format, int i, va_list args,
+t_data *data);
+t_data				*after_flag(const char *format, int i, va_list args,
+t_data *data);
 void				num_or_star(const char *format, int i, t_data *data);
 int					copy_num(const char *format, int i);
 t_data				*error(const char *format, int i, t_data *data);
+t_data				*error_prec_zeros(const char *format, int i, t_data *data);
 void				prec_zeros(int nums, int length, t_data *data);
 t_data				*base_zero(t_data *data);
 void				ft_putstrn(const char *s);

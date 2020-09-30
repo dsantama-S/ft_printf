@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 14:11:35 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:11:23 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -433,10 +433,6 @@ int		main(void)
 	ft_printf("F2: %-10.*d si\n\n", 13, 7);
 	printf("F1: %-*.3d star\n\n", 13, 7);
 	ft_printf("F2: %-*.3d star\n\n", 13, 7);
-	printf("F1: %-0*.4d star\n\n", 13, 7);
-	ft_printf("F2: %-0*.4d star\n\n", 13, 7);
-	printf("F1: %0-*.5d star\n\n", 13, 7);
-	ft_printf("F2: %0-*.5d star\n\n", 13, 7);
 	printf("F1: %-*.1d star\n\n", 23, 7);
 	ft_printf("F2: %-*.1d star\n\n", 23, 7);
 	printf("F1: %-10p si\n\n", &p);
@@ -453,16 +449,62 @@ int		main(void)
 	ft_printf("F2: %-10.3d si\n\n", -7);
 	printf("F1: %-10.04s\n\n", "JUANITO");
 	ft_printf("F2: %-10.04s\n\n", "JUANITO");
+	printf("F1: %-.04s\n\n", "JUANITO");
+	ft_printf("F2: %-.04s\n\n", "JUANITO");
+	printf("F1: %-.4i\n\n", 70);
+	ft_printf("F2: %-.4i\n\n", 70);
+	printf("F1: %-.00s\n\n", "JUANITO");
+	ft_printf("F2: %-.00s\n\n", "JUANITO");
+	printf("F1: %.000s\n\n", "JUANITO");
+	ft_printf("F2: %.000s\n\n", "JUANITO");
+	printf("F1: %0*i\n\n", 7, -54);
+	ft_printf("F2: %0*i\n\n", 7, -54);
+	printf("F1: h %0*i h\n\n", -7, -54);
+	ft_printf("F2: h %0*i h\n\n", -7, -54);
+	printf("F1: h %0*i h\n\n", -42, -54);
+	ft_printf("F2: h %0*i h\n\n", -42, -54);
+	printf("F1: %0*i\n\n", 7, 54);
+	ft_printf("F2: %0*i\n\n", 7, 54);
+	printf("F1: h %*s h\n\n", -32, "abc");
+	ft_printf("F2: h %*s h\n\n", -32, "abc");
+	printf("F1: h %*s h\n\n", -7, "abc");
+	ft_printf("F2: h %*s h\n\n", -7, "abc");
+	printf("F1: h %*s h\n\n", 32, "zba");
+	ft_printf("F2: h %*s h\n\n", 32, "zba");
+	printf("F1: h %-*s h\n\n", -32, "abc");
+	ft_printf("F2: h %-*s h\n\n", -32, "abc");
+	printf("F1: h %-*s h\n\n", 32, "zba");
+	ft_printf("F2: h %-*s h\n\n", 32, "zba");
+	printf("F1: %0*i\n\n", 7, -54);
+	ft_printf("F2: %0*i\n\n", 7, -54);
+	printf("F1: %0*i h\n\n", -7, -54);
+	ft_printf("F2: %0*i h\n\n", -7, -54);
 	printf("\n*************** %s ***************\n\n", "Tests primer cero");
 	printf("F1: %00d\n\n", 6);
 	ft_printf("F2: %00d\n\n", 6);
 	printf("F1: %0d\n\n", 6);
 	ft_printf("F2: %0d\n\n", 6);
-	printf("\n*************** %s ***************\n\n", "Tests precision con 0 o sin nada");
-	printf("F1: %5.0i\n\n", 50);
-	ft_printf("F2: %5.0i\n\n", 50);
-	printf("F1: %5.i\n\n", 50);
-	ft_printf("F2: %5.i\n\n", 50);
-	printf("F1: %.0i\n\n", 50);
-	ft_printf("F2: %.0i\n\n", 50);
+	printf("F1: %-x\n\n", 6);
+	ft_printf("F2: %-x\n\n", 6);
+	printf("F1: %-u\n\n", 6);
+	ft_printf("F2: %-u\n\n", 6);
+	printf("F1: %-s\n\n", "ab");
+	ft_printf("F2: %-s\n\n", "ab");
+	printf("F1: %-p\n\n", &p);
+	ft_printf("F2: %-p\n\n", &p);
+	printf("\n*************** %s ***************\n\n", "Tests octal");
+	printf ("F2: %O\n\n", 56);
+	ft_printf ("F1: %O\n\n", 56);
+	printf("F1: %.*o\n\n", 4, 1234);
+	ft_printf("F2: %.*o\n\n", 4, 1234);
+	printf("F1: %10.4o\n\n", 1987);
+	ft_printf("F2: %10.4o\n\n", 1987);
+	printf("F1: %10.6o\n\n", 1987);
+	ft_printf("F2: %10.6o\n\n", 1987);
+	printf("F1: %% *.5i 42 == |% *.5i|\n\n", 4, 42);
+	ft_printf("F2: %% *.5i 42 == |% *.5i|\n\n", 4, 42);
+	printf("F1: %% *.5i 42 == |% i|\n\n", 42);
+	ft_printf("F2: %% *.5i 42 == |% i|\n\n", 42);
+	printf("F1: %% *.5i 42 == |% .5i|\n\n", 42);
+	ft_printf("F2: %% *.5i 42 == |% .5i|\n\n", 42);
 }
