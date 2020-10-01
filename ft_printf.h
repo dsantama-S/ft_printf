@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/30 13:38:51 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/01 13:43:44 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ t_data				*ft_wprintper(t_data *data);
 t_data				*ft_wprintoct(va_list args, t_data *data);
 t_data				*ft_wprinthex(const char *format, int i, va_list args,
 t_data *data);
-void				ft_sprintstr(va_list args, t_data *data);
-void				ft_sprintint(va_list args, t_data *data);
+t_data				*ft_sprintstr(va_list args, t_data *data);
+t_data				*ft_sprintint(va_list args, t_data *data);
 void				ft_sprintuns(va_list args, t_data *data);
-void				ft_sprintoct(va_list args, t_data *data);
-void				ft_sprinthex(const char *format, int i, va_list args,
+t_data				*ft_sprintoct(va_list args, t_data *data);
+t_data				*ft_sprinthex(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_dash(const char *format, int i, va_list args,
 t_data *data);

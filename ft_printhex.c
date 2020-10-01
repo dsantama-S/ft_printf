@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 12:14:54 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/01 14:02:38 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,26 @@ void		ft_printhex(const char *format, int i, va_list args)
 	if (format[i] == 'X')
 		str = ft_itoa_base(nums, 16, 'A');
 	ft_putstr(str);
+	free(str);
 }
 
 t_data		*ft_wprinthex(const char *format, int i, va_list args, t_data *data)
 {
 	unsigned		nums;
+	char			*str;
 
 	nums = va_arg(args, unsigned int);
 	if (format[i] == 'x')
-		data->str = ft_itoa_base(nums, 16, 'a');
+		str = ft_itoa_base(nums, 16, 'a');
 	if (format[i] == 'X')
-		data->str = ft_itoa_base(nums, 16, 'A');
-	data->len = ft_strlen(data->str);
+		str = ft_itoa_base(nums, 16, 'A');
+	data->len = ft_strlen(str);
+	data->str = str;
+	free(str);
 	return (data);
 }
 
-void		ft_sprinthex(const char *format, int i, va_list args, t_data *data)
+t_data		*ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 {
 	char			*str;
 	unsigned		nums;
@@ -79,16 +83,17 @@ void		ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 		str = ft_itoa_base(nums, 16, 'A');
 	length = ft_strlen(str);
 	data->len = length;
+	data->str = str;
 	if (data->prec > length)
 		prec_zeros_hex(length, data);
 	if (data->pr == '1')
 	{
-		data->str = str;
 		if (data->digits_prec > 1)
 			data->total += 1;
 		if (data->digits_prec > 2)
 			data->total += data->digits_prec - 2;
 	}
 	else
-		ft_putstr(str);
+		ft_putstr(data->str);
+	return (data);
 }

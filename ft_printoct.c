@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:03:15 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/30 12:12:11 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/01 13:35:50 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,23 @@ void		ft_printoct(va_list args)
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 8, 'a');
 	ft_putstr(str);
+	free(str);
 }
 
 t_data		*ft_wprintoct(va_list args, t_data *data)
 {
 	unsigned		nums;
+	char			*str;
 
 	nums = va_arg(args, unsigned int);
-	data->str = ft_itoa_base(nums, 8, 'a');
-	data->len = ft_strlen(data->str);
+	str = ft_itoa_base(nums, 8, 'a');
+	data->len = ft_strlen(str);
+	data->str = str;
+	free(str);
 	return (data);
 }
 
-void		ft_sprintoct(va_list args, t_data *data)
+t_data		*ft_sprintoct(va_list args, t_data *data)
 {
 	char			*str;
 	unsigned		nums;
@@ -82,4 +86,6 @@ void		ft_sprintoct(va_list args, t_data *data)
 	}
 	else
 		ft_putstr(str);
+	free(str);
+	return (data);
 }

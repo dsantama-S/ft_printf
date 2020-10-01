@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:32:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 09:06:00 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/01 13:40:40 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	no_width(char *str, int nums, t_data *data)
 			ft_putstr(str);
 	else
 		ft_putstr(str);
+	free(str);
 }
 
 void		ft_printint(va_list args)
@@ -31,11 +32,13 @@ void		ft_printint(va_list args)
 	nums = va_arg(args, int);
 	str = ft_itoa(nums);
 	ft_putstr(str);
+	free(str);
 }
 
 t_data		*ft_wprintint(va_list args, t_data *data)
 {
-	int nums;
+	int		nums;
+	char	*str;
 
 	nums = va_arg(args, int);
 	if (nums < 0 && data->from_zero == '1')
@@ -43,12 +46,14 @@ t_data		*ft_wprintint(va_list args, t_data *data)
 		ft_putchar('-');
 		data->negative = '1';
 	}
-	data->str = ft_itoa(nums);
-	data->len = ft_strlen(data->str);
+	str = ft_itoa(nums);
+	data->len = ft_strlen(str);
+	data->str = str;
+	free(str);
 	return (data);
 }
 
-void		ft_sprintint(va_list args, t_data *data)
+t_data		*ft_sprintint(va_list args, t_data *data)
 {
 	char	*str;
 	int		nums;
@@ -72,4 +77,5 @@ void		ft_sprintint(va_list args, t_data *data)
 	}
 	else
 		no_width(str, nums, data);
+	return (data);
 }

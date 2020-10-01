@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/28 12:03:41 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/01 13:40:36 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,26 @@ void		ft_printstr(va_list args)
 	else
 		str = ft_strdup(var);
 	ft_putstr(str);
+	free(str);
 }
 
 t_data		*ft_wprintstr(va_list args, t_data *data)
 {
 	char *var;
+	char *str;
 
 	var = va_arg(args, char *);
 	if (!var)
-		data->str = ft_strdup("(null)");
+		str = ft_strdup("(null)");
 	else
-		data->str = ft_strdup(var);
-	data->len = ft_strlen(data->str);
+		str = ft_strdup(var);
+	data->len = ft_strlen(str);
+	data->str = str;
+	free(str);
 	return (data);
 }
 
-void		ft_sprintstr(va_list args, t_data *data)
+t_data		*ft_sprintstr(va_list args, t_data *data)
 {
 	char	*var;
 	char	*str;
@@ -63,4 +67,5 @@ void		ft_sprintstr(va_list args, t_data *data)
 	else
 		ft_putstr(dest);
 	free(dest);
+	return (data);
 }

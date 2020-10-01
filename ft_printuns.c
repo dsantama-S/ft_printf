@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 08:54:02 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/25 12:20:08 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/01 13:43:14 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,19 @@ void		ft_printuns(va_list args)
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 10, 'a');
 	ft_putstr(str);
+	free(str);
 }
 
 t_data		*ft_wprintuns(va_list args, t_data *data)
 {
-	unsigned nums;
+	unsigned	nums;
+	char		*str;
 
 	nums = va_arg(args, unsigned int);
-	data->str = ft_itoa_base(nums, 10, 'a');
-	data->len = ft_strlen(data->str);
+	str = ft_itoa_base(nums, 10, 'a');
+	data->len = ft_strlen(str);
+	data->str = str;
+	free(str);
 	return (data);
 }
 
