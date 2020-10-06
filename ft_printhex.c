@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:08:03 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:38:24 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_data		*ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 
 t_data		*putpreczero(t_data *data)
 {
-	int 	count;
+	int	count;
 
 	count = 0;
 	if (data->nums < 0)
