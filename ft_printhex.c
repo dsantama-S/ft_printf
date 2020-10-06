@@ -6,31 +6,23 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/01 14:02:38 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:08:03 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	prec_zeros_hex(int length, t_data *data)
+static void	prec_zeros_hex(t_data *data)
 {
 	int		zeros;
 	int		count;
-	char	*str;
 
 	count = 0;
-	zeros = (data->prec - length);
-	str = malloc(zeros);
+	zeros = (data->prec - data->len);
 	if (data->pr == '1')
 	{
-		while (count < zeros)
-		{
-			str[count] = '0';
-			count++;
-		}
-		data->len = length + count;
-		data->szero = str;
-		free(str);
+		data->hzero = zeros;
+		data->len += zeros;
 	}
 	else
 		while (count < zeros)
@@ -72,20 +64,18 @@ t_data		*ft_wprinthex(const char *format, int i, va_list args, t_data *data)
 
 t_data		*ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 {
-	char			*str;
 	unsigned		nums;
-	int				length;
+	char			*str;
 
 	nums = va_arg(args, unsigned int);
 	if (format[i] == 'x')
 		str = ft_itoa_base(nums, 16, 'a');
 	if (format[i] == 'X')
 		str = ft_itoa_base(nums, 16, 'A');
-	length = ft_strlen(str);
-	data->len = length;
+	data->len = ft_strlen(str);
 	data->str = str;
-	if (data->prec > length)
-		prec_zeros_hex(length, data);
+	if (data->prec > data->len)
+		prec_zeros_hex(data);
 	if (data->pr == '1')
 	{
 		if (data->digits_prec > 1)
@@ -95,5 +85,21 @@ t_data		*ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 	}
 	else
 		ft_putstr(data->str);
+	free(str);
+	return (data);
+}
+
+t_data		*putpreczero(t_data *data)
+{
+	int 	count;
+
+	count = 0;
+	if (data->nums < 0)
+		ft_putchar('-');
+	while (count < data->hzero)
+	{
+		ft_putchar('0');
+		count++;
+	}
 	return (data);
 }

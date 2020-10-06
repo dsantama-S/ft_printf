@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/01 13:43:44 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:23:52 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ typedef struct		s_data
 	int				len;
 	int				prec;
 	int				space;
+	int				nums;
 	char			*str;
 	char			*ptr;
-	char			*szero;
+	int				hzero;
 	char			true_zero;
 	char			from_zero;
 	char			negstar;
@@ -103,10 +104,11 @@ void				num_or_star(const char *format, int i, t_data *data);
 int					copy_num(const char *format, int i);
 t_data				*error(const char *format, int i, t_data *data);
 t_data				*error_prec_zeros(const char *format, int i, t_data *data);
-void				prec_zeros(int nums, int length, t_data *data);
+void				prec_zeros(int nums, t_data *data);
 t_data				*base_zero(t_data *data);
 void				ft_putstrn(const char *s);
-void				analyze_prec(int nums, int length, t_data *data);
+void				analyze_prec(int nums, t_data *data);
 void				ft_spec(const char *format, int i, va_list args,
 t_data *data);
+t_data				*putpreczero(t_data *data);
 #endif

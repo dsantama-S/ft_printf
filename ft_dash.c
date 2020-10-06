@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 13:01:48 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/30 13:43:41 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:23:14 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int		ef_number_digit(int n)
 static t_data	*ft_val(const char *format, int i, va_list args, t_data *data)
 {
 	ft_width(format, i, args, data);
-	if (!(!data->szero))
-		ft_putstr(data->szero);
+	if (data->hzero != 0)
+		putpreczero(data);
 	if (data->digits > 1)
 	{
 		i += (data->digits - 1);

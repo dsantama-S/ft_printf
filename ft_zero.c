@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:34:34 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/30 13:40:33 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:22:59 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void		putzeros(int num, t_data *data)
 			ft_putchar('0');
 			count++;
 		}
-	if (!(!data->szero))
-		ft_putstr(data->szero);
+	if (data->hzero != 0)
+		putpreczero(data);
 }
 
 static void		putspaces(int num, t_data *data)
@@ -45,8 +45,8 @@ static void		putspaces(int num, t_data *data)
 		ft_putchar(' ');
 		count++;
 	}
-	if (!(!data->szero))
-		ft_putstr(data->szero);
+	if (data->hzero != 0)
+		putpreczero(data);
 }
 
 static t_data	*ft_val(const char *format, int i, va_list args, t_data *data)

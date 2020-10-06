@@ -6,11 +6,12 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 11:58:33 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/01 13:19:50 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:22:36 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static int			ef_number_digit(int n)
 {
@@ -45,8 +46,8 @@ static void			putspaces(int num, t_data *data)
 		ft_putchar(' ');
 		count++;
 	}
-	if (!(!data->szero))
-		ft_putstr(data->szero);
+	if (data->hzero != 0)
+		putpreczero(data);
 }
 
 t_data				*ft_spaces(const char *format, int i, va_list args,

@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/01 13:40:36 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:28:58 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ t_data		*ft_sprintstr(va_list args, t_data *data)
 		str = ft_strdup(var);
 	dest = (char *)malloc(ft_strlen(str));
 	ft_strncpy(dest, str, data->prec);
+	free(str);
 	data->len = ft_strlen(dest);
+	data->str = dest;
 	if (data->pr == '1')
 	{
-		data->str = dest;
 		if (data->digits_prec > 1)
 			data->total += 1;
 		if (data->digits_prec > 2)

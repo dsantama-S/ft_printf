@@ -6,47 +6,32 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 09:06:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/30 13:19:00 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/06 13:22:13 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		prec_zeros_width(int nums, int length, t_data *data, int zeros)
+static void		prec_zeros_width(int nums, t_data *data, int zeros)
 {
-	int		count;
-	char	*str;
-
-	str = malloc(zeros);
-	count = 0;
 	if (nums < 0)
 	{
-		str[0] = '-';
-		count++;
-		zeros += 2;
-		length += -1;
+		data->nums = nums;
+		zeros += 1;
 	}
-	while (count < zeros)
-	{
-		str[count] = '0';
-		count++;
-	}
-	data->len = length + count;
-	data->szero = str;
-	free(str);
+	data->len += zeros;
+	data->hzero = zeros;
 }
 
-void			prec_zeros(int nums, int length, t_data *data)
+void			prec_zeros(int nums, t_data *data)
 {
 	int		zeros;
 	int		count;
 
 	count = 0;
-	zeros = (data->prec - length);
+	zeros = (data->prec - data->len);
 	if (data->pr == '1')
-	{
-		prec_zeros_width(nums, length, data, zeros);
-	}
+		prec_zeros_width(nums, data, zeros);
 	else
 	{
 		if (nums < 0)
@@ -74,9 +59,10 @@ t_data			*base_zero(t_data *data)
 	data->negstar = '0';
 	data->space = 0;
 	data->count = 0;
+	data->hzero = 0;
+	data->nums = 0;
 	data->len = 0;
 	data->str = NULL;
-	data->szero = NULL;
 	return (data);
 }
 
@@ -95,21 +81,21 @@ void			ft_putstrn(const char *s)
 	}
 }
 
-void			analyze_prec(int nums, int length, t_data *data)
+void			analyze_prec(int nums, t_data *data)
 {
 	if (nums < 0)
 	{
-		if (data->prec >= length)
+		if (data->prec >= data->len)
 		{
-			prec_zeros(nums, length, data);
+			prec_zeros(nums, data);
 			data->true_zero = '1';
 		}
 	}
 	else
 	{
-		if (data->prec > length)
+		if (data->prec > data->len)
 		{
-			prec_zeros(nums, length, data);
+			prec_zeros(nums, data);
 			data->true_zero = '1';
 		}
 	}
