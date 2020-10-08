@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:31:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/09/30 13:24:36 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 13:36:17 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ t_data		*error(const char *format, int i, t_data *data)
 			data->total += 1;
 		if (format[i] == 'o' || format[i] == 'O')
 			data->total += 1;
+		if (format[i] == 'p')
+		{
+			data->ptr = "0x";
+			data->len += 2;
+			data->printed += 2;
+			data->total += 1;
+		}
 		if (format[i] == 'd' || format[i] == 'D' || format[i] == 'i')
 			data->total += 1;
 		data->error = '1';
@@ -63,21 +70,24 @@ t_data		*after_flag(const char *format, int i, va_list args, t_data *data)
 	if (format[i] >= 65 && format[i] <= 122)
 	{
 		if (format[i] == 'c' || format[i] == 'C')
-			ft_printchar(args);
+			ft_printchar(args, data);
 		if (format[i] == 's')
-			ft_printstr(args);
+			ft_printstr(args, data);
 		if (format[i] == 'p')
-			ft_printptr(args);
+			ft_printptr(args, data);
 		if (format[i] == 'd' || format[i] == 'D' || format[i] == 'i')
-			ft_printint(args);
+			ft_printint(args, data);
 		if (format[i] == 'u' || format[i] == 'U')
-			ft_printuns(args);
+			ft_printuns(args, data);
 		if (format[i] == 'x' || format[i] == 'X')
-			ft_printhex(format, i, args);
+			ft_printhex(format, i, args, data);
 		if (format[i] == 'o' || format[i] == 'O')
-			ft_printoct(args);
+			ft_printoct(args, data);
 		if (format[i] == '%')
+		{
+			data->printed++;
 			ft_putchar('%');
+		}
 		data->total += 1;
 		data->from_zero = '0';
 	}
@@ -90,6 +100,7 @@ t_data		*little_space(const char *format, int i, t_data *data)
 	{
 		data->space = 1;
 		ft_putchar(' ');
+		data->printed++;
 	}
 	return (data);
 }

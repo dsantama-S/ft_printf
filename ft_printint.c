@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:32:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:26:12 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 10:57:01 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ static void	no_width(char *str, int nums, t_data *data)
 	free(str);
 }
 
-void		ft_printint(va_list args)
+t_data		*ft_printint(va_list args, t_data *data)
 {
 	char	*str;
 	int		nums;
 
 	nums = va_arg(args, int);
 	str = ft_itoa(nums);
+	data->len = ft_strlen(str);
+	data->printed += data->len;
 	ft_putstr(str);
 	free(str);
+	return (data);
 }
 
 t_data		*ft_wprintint(va_list args, t_data *data)
@@ -48,6 +51,7 @@ t_data		*ft_wprintint(va_list args, t_data *data)
 	}
 	str = ft_itoa(nums);
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	free(str);
 	return (data);
@@ -61,6 +65,7 @@ t_data		*ft_sprintint(va_list args, t_data *data)
 	nums = va_arg(args, int);
 	str = ft_itoa(nums);
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	analyze_prec(nums, data);
 	if (data->pr == '1')

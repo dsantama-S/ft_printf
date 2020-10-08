@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:59:27 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:38:24 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 12:00:29 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	prec_zeros_hex(t_data *data)
 
 	count = 0;
 	zeros = (data->prec - data->len);
+	data->printed += zeros;
 	if (data->pr == '1')
 	{
 		data->hzero = zeros;
@@ -32,7 +33,7 @@ static void	prec_zeros_hex(t_data *data)
 		}
 }
 
-void		ft_printhex(const char *format, int i, va_list args)
+t_data		*ft_printhex(const char *format, int i, va_list args, t_data *data)
 {
 	char			*str;
 	unsigned		nums;
@@ -42,8 +43,11 @@ void		ft_printhex(const char *format, int i, va_list args)
 		str = ft_itoa_base(nums, 16, 'a');
 	if (format[i] == 'X')
 		str = ft_itoa_base(nums, 16, 'A');
+	data->len = ft_strlen(str);
+	data->printed += data->len;
 	ft_putstr(str);
 	free(str);
+	return (data);
 }
 
 t_data		*ft_wprinthex(const char *format, int i, va_list args, t_data *data)
@@ -57,6 +61,7 @@ t_data		*ft_wprinthex(const char *format, int i, va_list args, t_data *data)
 	if (format[i] == 'X')
 		str = ft_itoa_base(nums, 16, 'A');
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	free(str);
 	return (data);
@@ -73,6 +78,7 @@ t_data		*ft_sprinthex(const char *format, int i, va_list args, t_data *data)
 	if (format[i] == 'X')
 		str = ft_itoa_base(nums, 16, 'A');
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	if (data->prec > data->len)
 		prec_zeros_hex(data);
@@ -94,6 +100,11 @@ t_data		*putpreczero(t_data *data)
 	int	count;
 
 	count = 0;
+	if (data->ptr != NULL)
+	{
+		ft_putstr(data->ptr);
+		data->ptr = NULL;
+	}
 	if (data->nums < 0)
 		ft_putchar('-');
 	while (count < data->hzero)

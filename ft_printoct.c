@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:03:15 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 12:47:13 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 11:08:37 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	prec_zeros_oct(t_data *data)
 
 	count = 0;
 	zeros = (data->prec - data->len);
+	data->printed += zeros;
 	if (data->pr == '1')
 	{
 		data->hzero = zeros;
@@ -32,15 +33,18 @@ static void	prec_zeros_oct(t_data *data)
 		}
 }
 
-void		ft_printoct(va_list args)
+t_data		*ft_printoct(va_list args, t_data *data)
 {
 	char			*str;
 	unsigned		nums;
 
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 8, 'a');
+	data->len = ft_strlen(str);
+	data->printed += data->len;
 	ft_putstr(str);
 	free(str);
+	return (data);
 }
 
 t_data		*ft_wprintoct(va_list args, t_data *data)
@@ -51,6 +55,7 @@ t_data		*ft_wprintoct(va_list args, t_data *data)
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 8, 'a');
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	free(str);
 	return (data);
@@ -64,6 +69,7 @@ t_data		*ft_sprintoct(va_list args, t_data *data)
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 8, 'a');
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	if (data->prec > data->len)
 		prec_zeros_oct(data);

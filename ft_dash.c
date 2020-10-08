@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 13:01:48 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:23:14 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 13:05:01 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_data	*ft_val(const char *format, int i, va_list args, t_data *data)
 	}
 	else
 		data->zero = 2;
-	if (data->mem != '0')
+	if (data->ptr != NULL)
 		ft_putstr(data->ptr);
 	if (data->ch == '0' && data->negative == '0')
 		ft_putstr(data->str);
@@ -61,6 +61,7 @@ t_data *data)
 	{
 		ft_putchar(' ');
 		count++;
+		data->printed++;
 	}
 	return (data);
 }
@@ -79,6 +80,7 @@ static t_data	*dash_num(const char *format, int i, va_list args, t_data *data)
 	{
 		ft_putchar(' ');
 		count++;
+		data->printed++;
 	}
 	return (data);
 }
@@ -88,8 +90,10 @@ t_data			*ft_dash(const char *format, int i, va_list args, t_data *data)
 	i++;
 	if (format[i] == '0')
 	{
-		i++;
 		data->total += 1;
+		i++;
+		error_prec_zeros(format, i, data);
+		i += data->count;
 	}
 	after_flag(format, i, args, data);
 	if (format[i] >= '1' && format[i] <= '9')

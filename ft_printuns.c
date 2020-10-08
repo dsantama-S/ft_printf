@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 08:54:02 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:39:27 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 13:03:22 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	prec_zeros_uns(t_data *data)
 
 	count = 0;
 	zeros = (data->prec - data->len);
+	data->printed += zeros;
 	if (data->pr == '1')
 	{
 		data->len += zeros;
@@ -32,15 +33,18 @@ static void	prec_zeros_uns(t_data *data)
 		}
 }
 
-void		ft_printuns(va_list args)
+t_data		*ft_printuns(va_list args, t_data *data)
 {
 	char				*str;
 	unsigned			nums;
 
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 10, 'a');
+	data->len = ft_strlen(str);
+	data->printed += data->len;
 	ft_putstr(str);
 	free(str);
+	return (data);
 }
 
 t_data		*ft_wprintuns(va_list args, t_data *data)
@@ -51,12 +55,13 @@ t_data		*ft_wprintuns(va_list args, t_data *data)
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 10, 'a');
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	free(str);
 	return (data);
 }
 
-void		ft_sprintuns(va_list args, t_data *data)
+t_data		*ft_sprintuns(va_list args, t_data *data)
 {
 	char			*str;
 	unsigned		nums;
@@ -64,6 +69,7 @@ void		ft_sprintuns(va_list args, t_data *data)
 	nums = va_arg(args, unsigned int);
 	str = ft_itoa_base(nums, 10, 'a');
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	if (data->prec > data->len)
 		prec_zeros_uns(data);
@@ -82,4 +88,5 @@ void		ft_sprintuns(va_list args, t_data *data)
 			ft_putstr(str);
 	}
 	free(str);
+	return (data);
 }

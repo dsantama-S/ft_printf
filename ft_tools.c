@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 09:06:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:22:13 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 12:28:52 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void		prec_zeros_width(int nums, t_data *data, int zeros)
 	{
 		data->nums = nums;
 		zeros += 1;
+		data->printed++;
 	}
 	data->len += zeros;
 	data->hzero = zeros;
@@ -30,6 +31,7 @@ void			prec_zeros(int nums, t_data *data)
 
 	count = 0;
 	zeros = (data->prec - data->len);
+	data->printed += zeros;
 	if (data->pr == '1')
 		prec_zeros_width(nums, data, zeros);
 	else
@@ -38,6 +40,7 @@ void			prec_zeros(int nums, t_data *data)
 		{
 			zeros += 1;
 			ft_putchar('-');
+			data->printed++;
 		}
 		while (count < zeros)
 		{
@@ -50,19 +53,20 @@ void			prec_zeros(int nums, t_data *data)
 t_data			*base_zero(t_data *data)
 {
 	data->negative = '0';
-	data->mem = '0';
 	data->ch = '0';
 	data->pr = '0';
 	data->error = '0';
 	data->true_zero = '0';
 	data->from_zero = '0';
 	data->negstar = '0';
+	data->from_star = '0';
 	data->space = 0;
 	data->count = 0;
 	data->hzero = 0;
 	data->nums = 0;
 	data->len = 0;
 	data->str = NULL;
+	data->ptr = NULL;
 	return (data);
 }
 

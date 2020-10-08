@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 11:58:33 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:22:36 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 11:55:27 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void			putspaces(int num, t_data *data)
 	{
 		ft_putchar(' ');
 		count++;
+		data->printed++;
 	}
 	if (data->hzero != 0)
 		putpreczero(data);
@@ -61,7 +62,7 @@ t_data *data)
 	}
 	else
 		data->zero = 1;
-	if (data->mem != '0')
+	if (data->ptr != NULL)
 		ft_putstr(data->ptr);
 	if (data->ch == '0' && data->negative == '1')
 		ft_putstrn(data->str);
@@ -89,7 +90,7 @@ t_data *data)
 	ft_width(format, i, args, data);
 	if (data->negstar == '0')
 		putspaces(num, data);
-	if (data->mem != '0')
+	if (data->ptr != NULL)
 		ft_putstr(data->ptr);
 	if (data->ch == '0' && data->negative == '1')
 		ft_putstrn(data->str);

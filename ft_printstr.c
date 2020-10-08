@@ -6,13 +6,13 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:30:27 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 12:49:52 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_printstr(va_list args)
+t_data		*ft_printstr(va_list args, t_data *data)
 {
 	char *str;
 	char *var;
@@ -22,8 +22,11 @@ void		ft_printstr(va_list args)
 		str = ft_strdup("(null)");
 	else
 		str = ft_strdup(var);
+	data->len = ft_strlen(str);
+	data->printed += data->len;
 	ft_putstr(str);
 	free(str);
+	return (data);
 }
 
 t_data		*ft_wprintstr(va_list args, t_data *data)
@@ -37,6 +40,7 @@ t_data		*ft_wprintstr(va_list args, t_data *data)
 	else
 		str = ft_strdup(var);
 	data->len = ft_strlen(str);
+	data->printed += data->len;
 	data->str = str;
 	free(str);
 	return (data);
@@ -57,6 +61,7 @@ t_data		*ft_sprintstr(va_list args, t_data *data)
 	ft_strncpy(dest, str, data->prec);
 	free(str);
 	data->len = ft_strlen(dest);
+	data->printed += data->len;
 	data->str = dest;
 	if (data->pr == '1')
 	{

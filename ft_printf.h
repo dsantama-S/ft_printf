@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/06 13:23:52 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/08 13:28:57 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_data
 	int				len;
 	int				prec;
 	int				space;
+	int				printed;
 	int				nums;
 	char			*str;
 	char			*ptr;
@@ -38,27 +39,28 @@ typedef struct		s_data
 	char			from_zero;
 	char			negstar;
 	char			ch;
+	char			from_star;
 	char			mychar;
-	char			mem;
 	char			pr;
 	char			error;
 	char			negative;
 }					t_data;
 
 int					ft_printf(const char *format, ...);
-void				ft_printchar(va_list args);
-void				ft_printint(va_list args);
-void				ft_printuns(va_list args);
-void				ft_printoct(va_list args);
+t_data				*ft_printchar(va_list args, t_data *data);
+t_data				*ft_printint(va_list args, t_data *data);
+t_data				*ft_printuns(va_list args, t_data *data);
+t_data				*ft_printoct(va_list args, t_data *data);
 t_data				*little_space(const char *format, int i, t_data *data);
 t_data				*ft_percent(const char *format, int i, va_list args,
 t_data *data);
-void				ft_printstr(va_list args);
+t_data				*ft_printstr(va_list args, t_data *data);
 t_data				*ft_putspaces(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_putzeros(const char *format, int i, va_list args,
 t_data *data);
-void				ft_printhex(const char *format, int i, va_list args);
+t_data				*ft_printhex(const char *format, int i, va_list args,
+t_data *data);
 void				ft_control(const char *format, int i, va_list args,
 t_data *data);
 void				ft_flags(const char *format, int i, va_list args,
@@ -73,7 +75,7 @@ t_data				*ft_starz(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_starpr(const char *format, int i, va_list args,
 t_data *data);
-void				ft_printptr(va_list args);
+t_data				*ft_printptr(va_list args, t_data *data);
 void				ft_width(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_precision(const char *format, int i, va_list args,
@@ -90,7 +92,8 @@ t_data				*ft_wprinthex(const char *format, int i, va_list args,
 t_data *data);
 t_data				*ft_sprintstr(va_list args, t_data *data);
 t_data				*ft_sprintint(va_list args, t_data *data);
-void				ft_sprintuns(va_list args, t_data *data);
+t_data				*ft_sprintptr(va_list args, t_data *data);
+t_data				*ft_sprintuns(va_list args, t_data *data);
 t_data				*ft_sprintoct(va_list args, t_data *data);
 t_data				*ft_sprinthex(const char *format, int i, va_list args,
 t_data *data);
