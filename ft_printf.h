@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:42:20 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 13:28:57 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:40:31 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ t_data				*ft_stardash(const char *format, int i, va_list args,
 t_data *data);
 t_data				*after_flag(const char *format, int i, va_list args,
 t_data *data);
+t_data				*after_flag_zero(const char *format, int i, va_list args,
+t_data *data);
 void				num_or_star(const char *format, int i, t_data *data);
 int					copy_num(const char *format, int i);
 t_data				*error(const char *format, int i, t_data *data);
@@ -113,5 +115,6 @@ void				ft_putstrn(const char *s);
 void				analyze_prec(int nums, t_data *data);
 void				ft_spec(const char *format, int i, va_list args,
 t_data *data);
+int					ef_number_digit(int n);
 t_data				*putpreczero(t_data *data);
 #endif

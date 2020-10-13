@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:34:34 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 13:29:07 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 09:55:20 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_data			*ft_zero(const char *format, int i, va_list args, t_data *data)
 {
 	i++;
 	data->from_zero = '1';
-	after_flag(format, i, args, data);
+	after_flag_zero(format, i, args, data);
 	if (data->from_zero == '0')
 		return (data);
 	if (format[i] == '-')

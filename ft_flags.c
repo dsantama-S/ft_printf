@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 09:31:28 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 13:36:17 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:12:50 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,10 @@ void		ft_flags(const char *format, int i, va_list args, t_data *data)
 
 t_data		*error(const char *format, int i, t_data *data)
 {
-	if (format[i] >= 65 && format[i] <= 122)
+	if ((format[i] == '*') || (format[i] >= '1' && format[i] <= '9'))
+		data->error = '0';
+	else
 	{
-		if (format[i] == 's')
-			data->total += 1;
-		if (format[i] == 'u' || format[i] == 'U')
-			data->total += 1;
-		if (format[i] == 'x' || format[i] == 'X')
-			data->total += 1;
-		if (format[i] == 'o' || format[i] == 'O')
-			data->total += 1;
 		if (format[i] == 'p')
 		{
 			data->ptr = "0x";
@@ -45,7 +39,7 @@ t_data		*error(const char *format, int i, t_data *data)
 			data->printed += 2;
 			data->total += 1;
 		}
-		if (format[i] == 'd' || format[i] == 'D' || format[i] == 'i')
+		else
 			data->total += 1;
 		data->error = '1';
 	}

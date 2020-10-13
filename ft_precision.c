@@ -6,19 +6,11 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 08:36:54 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 13:13:55 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:46:56 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int			ef_number_digit(int n)
-{
-	if (n > -10 && n < 10)
-		return (1);
-	else
-		return (1 + ef_number_digit(n / 10));
-}
 
 static t_data		*ft_numpr(const char *format, int i, va_list args,
 t_data *data)
@@ -27,7 +19,12 @@ t_data *data)
 	data->digits = ef_number_digit(data->prec);
 	ft_spec(format, i, args, data);
 	if (data->digits > 1)
-		data->zero = data->digits + 1;
+	{
+		if (data->from_star == '1' || data->digits_prec > 1)
+			data->zero = data->digits;
+		else
+			data->zero = data->digits + 1;
+	}
 	else
 		data->zero = 2;
 	return (data);

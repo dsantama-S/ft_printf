@@ -6,13 +6,22 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 08:54:02 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 13:03:22 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:38:08 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	prec_zeros_uns(t_data *data)
+static t_data		*from_width(t_data *data)
+{
+	if (data->digits_prec > 1)
+		data->total += 1;
+	if (data->digits_prec > 2)
+		data->total += data->digits_prec - 2;
+	return (data);
+}
+
+static void			prec_zeros_uns(t_data *data)
 {
 	int		zeros;
 	int		count;
@@ -33,7 +42,7 @@ static void	prec_zeros_uns(t_data *data)
 		}
 }
 
-t_data		*ft_printuns(va_list args, t_data *data)
+t_data				*ft_printuns(va_list args, t_data *data)
 {
 	char				*str;
 	unsigned			nums;
@@ -47,7 +56,7 @@ t_data		*ft_printuns(va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_wprintuns(va_list args, t_data *data)
+t_data				*ft_wprintuns(va_list args, t_data *data)
 {
 	unsigned	nums;
 	char		*str;
@@ -61,7 +70,7 @@ t_data		*ft_wprintuns(va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_sprintuns(va_list args, t_data *data)
+t_data				*ft_sprintuns(va_list args, t_data *data)
 {
 	char			*str;
 	unsigned		nums;
@@ -74,12 +83,7 @@ t_data		*ft_sprintuns(va_list args, t_data *data)
 	if (data->prec > data->len)
 		prec_zeros_uns(data);
 	if (data->pr == '1')
-	{
-		if (data->digits_prec > 1)
-			data->total += 1;
-		if (data->digits_prec > 2)
-			data->total += data->digits_prec - 2;
-	}
+		from_width(data);
 	else
 	{
 		if (nums < 0)

@@ -6,22 +6,25 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 11:21:09 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 10:58:30 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:57:58 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static int	ef_number_digit(int n)
+static t_data		*from_width(int count, int num, t_data *data)
 {
-	if (n > -10 && n < 10)
-		return (1);
-	else
-		return (1 + ef_number_digit(n / 10));
+	while (count < (num - data->len))
+	{
+		ft_putchar(' ');
+		count++;
+		data->printed++;
+	}
+	return (data);
 }
 
-int			copy_num(const char *format, int i)
+int					copy_num(const char *format, int i)
 {
 	char	*str;
 	int		n;
@@ -41,7 +44,8 @@ int			copy_num(const char *format, int i)
 	return (num);
 }
 
-t_data		*ft_putzeros(const char *format, int i, va_list args, t_data *data)
+t_data				*ft_putzeros(const char *format, int i, va_list args,
+t_data *data)
 {
 	int		num;
 	int		count;
@@ -52,14 +56,7 @@ t_data		*ft_putzeros(const char *format, int i, va_list args, t_data *data)
 	data->digits_prec = data->digits;
 	ft_width(format, i, args, data);
 	if (data->pr == '1')
-	{
-		while (count < (num - data->len))
-		{
-			ft_putchar(' ');
-			count++;
-			data->printed++;
-		}
-	}
+		from_width(count, num, data);
 	else
 		while (count < (num - data->len))
 		{
@@ -72,7 +69,8 @@ t_data		*ft_putzeros(const char *format, int i, va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_putspaces(const char *format, int i, va_list args, t_data *data)
+t_data				*ft_putspaces(const char *format, int i, va_list args,
+t_data *data)
 {
 	int		num;
 	int		count;
@@ -93,7 +91,8 @@ t_data		*ft_putspaces(const char *format, int i, va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_percent(const char *format, int i, va_list args, t_data *data)
+t_data				*ft_percent(const char *format, int i, va_list args,
+t_data *data)
 {
 	static int		n;
 

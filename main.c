@@ -6,7 +6,7 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 12:38:24 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 10:09:50 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:25:35 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -507,12 +507,12 @@ int		main(void)
 	ft_printf("F2: %% *.5i 42 == |% i|\n\n", 42);
 	printf("F1: %% *.5i 42 == |% .5i|\n\n", 42);
 	ft_printf("F2: %% *.5i 42 == |% .5i|\n\n", 42);
-	printf("F1: %*.10x\n\n", 20, -3);
-	ft_printf("F2: %*.10x\n\n", 20, -3);
 	printf("F1: !%.60i! o\n\n", -1847028796);
 	ft_printf("F2: !%.60i! o\n\n", -1847028796);
 	printf("F1: !%.60i! o\n\n", 2147483647);
 	ft_printf("F2: !%.60i! o\n\n", 2147483647);
 	printf("F1: !%.10i! o\n\n", 2147);
 	ft_printf("F2: !%.10i! o\n\n", 2147);
+	printf("F1: %*.10x\n\n", 20, -3);
+	ft_printf("F2: %*.10x\n\n", 20, -3);
 }

@@ -6,13 +6,22 @@
 /*   By: dsantama <dsantama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 09:05:59 by dsantama          #+#    #+#             */
-/*   Updated: 2020/10/08 12:49:52 by dsantama         ###   ########.fr       */
+/*   Updated: 2020/10/13 10:37:33 by dsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_data		*ft_printstr(va_list args, t_data *data)
+static t_data		*from_width(t_data *data)
+{
+	if (data->digits_prec > 1)
+		data->total += 1;
+	if (data->digits_prec > 2)
+		data->total += data->digits_prec - 2;
+	return (data);
+}
+
+t_data				*ft_printstr(va_list args, t_data *data)
 {
 	char *str;
 	char *var;
@@ -29,7 +38,7 @@ t_data		*ft_printstr(va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_wprintstr(va_list args, t_data *data)
+t_data				*ft_wprintstr(va_list args, t_data *data)
 {
 	char *var;
 	char *str;
@@ -46,7 +55,7 @@ t_data		*ft_wprintstr(va_list args, t_data *data)
 	return (data);
 }
 
-t_data		*ft_sprintstr(va_list args, t_data *data)
+t_data				*ft_sprintstr(va_list args, t_data *data)
 {
 	char	*var;
 	char	*str;
@@ -64,12 +73,7 @@ t_data		*ft_sprintstr(va_list args, t_data *data)
 	data->printed += data->len;
 	data->str = dest;
 	if (data->pr == '1')
-	{
-		if (data->digits_prec > 1)
-			data->total += 1;
-		if (data->digits_prec > 2)
-			data->total += data->digits_prec - 2;
-	}
+		from_width(data);
 	else
 		ft_putstr(dest);
 	free(dest);
